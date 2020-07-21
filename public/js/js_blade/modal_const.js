@@ -9,7 +9,6 @@ $(function (event) {
         });
 });
 
-
 $(function (event) {
     $(".lotto_category_client")
         .off()

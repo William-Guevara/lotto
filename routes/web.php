@@ -57,7 +57,17 @@ Route::get('adminPurchase/{category}', 'AdminPurchasesController@ShowPurchases')
 
 //vistas Loterias cliente cart
 Route::get('browseProducts/{category}', 'BrowseProductsController@ShowBrowseProduct')->name('browseProducts'); //Vista de compras
+Route::post('addToCart', 'BrowseProductsController@guardarProducto')->name('addToCart'); //Guardar cookie
+Route::get('Carrito', 'BrowseProductsController@ShowCart')->name('Carrito'); //Agregar datos a modal Carrito
+Route::post('DeleteToCart', 'BrowseProductsController@DeleteToCart')->name('DeleteToCart'); //Eliminar un elemento del carro
+Route::post('BorrarCarrito', 'BrowseProductsController@clearCart')->name('BorrarCarrito'); //Eliminar los datos del carrito
+Route::get('checkout', 'BrowseProductsController@checkout'); //Generar compra o transaccion
+//VITRINA:: muestra de productos a comercializar
+//PRUEBA MÓDULO DE TRANSFERENCIAS
 
+
+Route::get('Carrito/{portfolio}', 'CommercialController@searchProduct'); //Agregar Cantidad de productos q se nceuntran en carrito
+Route::get('DetailExchange/{portfolio}', 'CommercialController@ShowDetailCart'); //muestra el detalle de los productos a trasferir que se enceuntran en el carrito
 
 
 
@@ -83,29 +93,3 @@ Route::get('/logout', function () {
 | A continuacion se encuentran todas las rutas de la aplicacion web
 |
  */
-
-//CATALOGOS COMERCIALES
-Route::get('PortafolioComercialMedicamentos', 'CommercialPortfolioController@ShowComercialPortfolioDrugs')->name('PortafolioComercialMedicamentos'); //Vista portafolio comercial de medicamentos
-Route::get('autocompleteInfoProduct', 'CommercialPortfolioController@autocompleteInfoProduct')->name('autocompleteInfoProduct'); //Al tipear con el teclado se visualizan los productos que se pueden agregar al catalogo propio y al seleccionar un producto se agrega automaticamente la informacion fija del mismo
-Route::post('Agregar', 'CommercialPortfolioController@Create'); //Agrega un producto al catalogo comercial
-
-//RUTAS: CREACION DE USUARIOS
-Route::get('Usuarios', 'UserController@ShowUser')->name('Usuarios'); //Vista de usuarios
-Route::get('autocompleteModalUser/{id}', 'UserController@SearchInfo'); //Carga la informacion del cliente seleccionado a las modales Actualizar cliente y Eliminar cliente
-Route::post('ActualizarUsuario', 'UserController@UserUpdate'); //Actualiza un usuario
-
-//VITRINA:: muestra de productos a comercializar
-//PRUEBA MÓDULO DE TRANSFERENCIAS
-Route::get('OportunidadAbastecimientoTest', 'ShowcaseController@findOpportunities')->name('Oportunidades')->middleware('auth');
-Route::get('OportunidadAbastecimiento', 'CommercialController@findOpportunities'); //Productos disponibles
-Route::post('guardarProducto', 'CommercialController@guardarProducto'); //Guardar cookie
-Route::post('autocompleteModaltransaction/{id}', 'CommercialController@autocompleteModaltransaction'); //Agregar datos a modal
-
-Route::get('UnidadesDisponibles', 'CommercialController@findAvailables'); //Agregar datos a modal
-Route::get('DisponiblesIntercambio', 'ShowcaseController@findAvailables')->name('DisponiblesIntercambio')->middleware('auth');
-
-Route::get('Carrito', 'CommercialController@ShowCart'); //Agregar datos a modal Carrito
-Route::get('Carrito/{portfolio}', 'CommercialController@searchProduct'); //Agregar Cantidad de productos q se nceuntran en carrito
-Route::get('DetailExchange/{portfolio}', 'CommercialController@ShowDetailCart'); //muestra el detalle de los productos a trasferir que se enceuntran en el carrito
-Route::get('checkout', 'CommercialController@checkout'); //Generar compra o transaccion
-Route::post('BorrarCarrito', 'CommercialController@clearCart'); //Eliminar los datos del carrito

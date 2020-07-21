@@ -22,7 +22,7 @@
 <script src="{{ asset('assets/js/main.js') }}"></script>
 
 <script src="{{ asset('js/js_blade/modal_const.js') }}"></script>
-
+<script src="{{ asset('js/js_blade/browse_products.js') }}"></script>
 
 {{-- Funcion para navegar desde el panel admin de loterias --}}
 <script>
@@ -34,9 +34,29 @@ function getRouteLotto(category) {
 }
 
 function getRouteLottoClient(category) {
-
 url = "{{ route('browseProducts', ':category') }}";
 url = url.replace(':category', category);
+return url;
+};
+
+// Rutas carrito de compras 
+function getRouteAddCart() {
+url = "{{ route('addToCart') }}";
+return url;
+}
+
+function getRouteDrop() {
+url = "{{ route('BorrarCarrito') }}";
+return url;
+}
+
+function getRouteDeleteToCart() {
+url = "{{ route('DeleteToCart') }}";
+return url;
+}
+
+function getRouteShowCar() {
+url = "{{ route('Carrito') }}";
 return url;
 }
 </script>

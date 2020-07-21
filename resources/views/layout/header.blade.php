@@ -6,7 +6,7 @@
             <h1><a href="{{ route('inicio') }}"><img src="{{ asset('images/logo.png') }}"
                         alt="Loterías Millonarias" /></a></h1>
         @if(auth()->check())
-        <p>Hi ¡¡ {{ auth()->user()->fname }} {{ auth()->user()->lname }}  </p>
+        <p style="background-color: white; border-radius: 5px 5px;">Hi {{ auth()->user()->fname }} {{ auth()->user()->lname }}  </p>
         @endif
         </div>
 

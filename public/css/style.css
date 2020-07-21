@@ -1,5 +1,8 @@
-.hidden_link{
-    visibility: hidden;
+.services .icon-box{
+    height: 235px;
+}
+.input_quantity{
+    width: 50px;
 }
 /* Revolution Slider
 ====================================================================== */

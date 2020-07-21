@@ -2,57 +2,46 @@
 <div class="modal fade" id="modalShopping" aria-hidden="true" aria-labelledby="modal-title" role="dialog" tabindex="-2">
     <div class="modal-dialog modal-lg modal-center">
         <div class="modal-content">
-            <div class="modal-header no-bd">
-                <h1 class="modal-title">
-                    <span class="fw-mediumbold">
-                        Productos seleccionados
-                    </span>
-                </h1>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            {{--Campos Individuales--}}
+            <section id="services" class="services">
+                <div class="container">
+                    <div class="section-title" data-aos="fade-up">
+                        <h2>Cart</h2>
+                    </div>
+                    {{--Campos Individuales--}}
 
-            {{--Tabla en modal Productos a tranferir--}}
-            <div id="table" style="width: 100%" class="table-responsive">
-                <table id="tableCart" style="width: 100%" class="display table table-striped table-hover">
-                    <colgroup>
-                        <col style="width: 25%">
-                        <col style="width: 12%">
-                        <col style="width: 10%">
-                        <col style="width: 8%">
-                        <col style="width: 10%">
-                        <col style="width: 15%">
-                        <col style="width: 8%">
-                        <col style="width: 8%">
-                        <col style="width: 5%">
-                    </colgroup>
-                    <thead>
-                        <tr>
-                            <th>Nombre del producto</th>
-                            <th>Codigo interno</th>
-                            <th>expiracion registro</th>
-                            <th>Tipo transaccion</th>
-                            <th>Costo unidad</th>
-                            <th>Cantidad disponible</th>
-                            <th>Cantidad Solicitada</th>
-                            <th>Total</th>
-                            <th style="visibility:hidden"></th>
-                        </tr>
-                    </thead>
-                    <tbody>
+                    {{--Tabla en modal Productos a tranferir--}}
+                    <div id="table" style="width: 100%" class="table-responsive">
+                        <table id="tableCart" style="width: 100%" class="display table table-striped table-hover">
+                            <colgroup>
+                                <col style="width: 50%">
+                                <col style="width: 15%">
+                                <col style="width: 10%">
+                                <col style="width: 15%">
+                                <col style="width: 10%">
+                            </colgroup>
+                            <thead>
+                                <tr>
+                                    <th>Product</th>
+                                    <th>Description</th>
+                                    <th>Quantity</th>
+                                    <th>Price</th>
+                                    <th>Total</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
 
-                    </tbody>
-                </table>
-            </div>
-            {{--Fin Tabla en modal--}}
-            <div class="modal-footer no-bd">
-                <button type="button" id="btnSendCart" class="btn btn-success">Realizar transaccion</button>
-                <button type="button" id="btnClearCart" class="btn btn-danger">Borrar carrito</button>
-                <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
-            </div>
+                            </tbody>
+                        </table>
+                    </div>
+                    {{--Fin Tabla en modal--}}
+                    <div class="modal-footer no-bd">
+                        <button type="button" id="btnSendCart" class="btn btn-success">Realizar transaccion</button>
+                        <button type="button" id="btnClearCart" class="btn btn-danger">Borrar carrito</button>
+                    </div>
+                </div>
         </div>
+        </section>
     </div>
 </div>
 {{--Fin Modal Carrito --}}
@@ -290,7 +279,8 @@
                                 </div>
                                 <div class="col-md-6 form-group">
                                     <label>Address</label>
-                                    <input type="text" class="form-control campos" name="address" placeholder="Address" />
+                                    <input type="text" class="form-control campos" name="address"
+                                        placeholder="Address" />
                                 </div>
                                 <div class="col-md-6 form-group">
                                     <label>City</label>
@@ -302,8 +292,8 @@
                                 </div>
                                 <div class="col-md-6 form-group">
                                     <label>ZipCode</label>
-                                    <input type="text" class="form-control campos" name="zip_code" placeholder="Zip Code"
-                                        value="0000" />
+                                    <input type="text" class="form-control campos" name="zip_code"
+                                        placeholder="Zip Code" value="0000" />
                                 </div>
                                 <div class="col-md-6 form-group">
                                     <label>Country</label>
