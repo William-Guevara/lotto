@@ -3,7 +3,7 @@
 @section('content')
 <section id="seccion_data" class="seccion_data">
     <div class="section-title">
-        <h2 data-aos="fade-up">Login</h2>
+        <h2 data-aos="fade-up">{!! trans('messages.loginTittle') !!}</h2>
     </div>
     <div class="container">
         @if ($errors->any())
@@ -20,7 +20,7 @@
             <!--Correo electronico-->
             <div class="form-group row">
 
-                <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('Email') }}</label>
+                <label for="email" class="col-md-4 col-form-label text-md-right">{!! trans('messages.loginEmail') !!}</label>
 
                 <div class="col-md-4">
 
@@ -40,7 +40,7 @@
             <!--Constraseña-->
             <div class="form-group row">
 
-                <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
+                <label for="password" class="col-md-4 col-form-label text-md-right">{!! trans('messages.loginPassword') !!}</label>
 
                 <div class="col-md-4">
                     <input id="password" type="password" placeholder="Contraseña"

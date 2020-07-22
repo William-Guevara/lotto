@@ -14,6 +14,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 Auth::routes();
+Route::get('lang/{lang}', 'LanguageController@swap')->name('lang.swap');
 
 Route::post('logout', 'Auth\LoginController@logout')->name('logout');
 

@@ -7,7 +7,7 @@
     <div class="container">
         <div class="section-title" data-aos="fade-up">
             <h2>{!! $category !!}</h2>
-            <a href="{!! $url !!}" target="_blank">Link resultados</a>
+            <a href="{!! $url !!}" target="_blank">{!! trans('messages.linkLotto') !!}</a>
         </div>
 
         <div class="row">
