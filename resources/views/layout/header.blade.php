@@ -41,10 +41,10 @@
                 <li><a style="color: red" href="{{ route('logout') }}">{!! trans('messages.logout') !!}</a></li>
                 @endif
                 @if(auth()->user())
-                @if(auth()->user()->level == 10)
-                <li><a data-toggle="modal" data-target="#modalPanel" style="color:red; cursor:pointer">{!!
-                        trans('messages.adminPanel') !!}</a></li>
-                @endif
+                    @if(auth()->user()->level == 10)
+                        <li><a data-toggle="modal" data-target="#modalPanel" style="color:red; cursor:pointer">
+                        {!! trans('messages.adminPanel') !!}</a></li>
+                    @endif
                 @endif
                 <li><a data-toggle="modal" data-target="#modalShopping" style="cursor:pointer">
                         <i class="bx bxs-cart" style="font-size:25px" aria-hidden="true"></i>

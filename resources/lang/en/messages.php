@@ -6,7 +6,7 @@ return [
     'welcome' => 'Welcome to Nigmacode.com',
     'home' => 'Home',
     'about' => 'About',
-    'faq' => 'Faq',
+    'faq' => 'FAQ',
     'contact' => 'Contact',
     'lotteries' => 'Lotteries',
     'login' => 'Login',

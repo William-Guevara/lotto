@@ -5,7 +5,10 @@ $.get('https://api.ipify.org?format=json', function(r) { ip = r.ip; });
 
 //add to menssage
 $(function(event) {
-    $('#btn_send').off().on("click", function(e) {
+    $('#btn_send_contact').off().on("click", function(e) {
+        if(ip == undefined){
+                ip =0;
+        }
         var _token = $('._token').val();
         var name = $('#name').val();
         var email = $('#email').val();
@@ -30,7 +33,7 @@ $(function(event) {
                 '_token': _token,
                 'full_name': name,
                 'email': email,
-                'menssage': comments,
+                'message': comments,
                 'IP': ip
             }),
             dataType: "json",
@@ -43,7 +46,7 @@ $(function(event) {
                         }
                     }
                 }).then((navigate) => {
-                    window.location.href = "contact_us";
+                    window.location.href = "index";
                 });
             },
             failure: function(response) {

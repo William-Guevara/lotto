@@ -2,6 +2,69 @@
  <!--#c62020
  #ff5821-->
  @section('content')
+ <section id="carrusel" class="carrusel" style="height: 200px;text-align: center;">
+     <div class="container">
+         <div id="carouselExampleResult" class="carousel slide" data-ride="carousel">
+             <ol class="carousel-indicators">
+                 <li data-target="#carouselExampleResult" data-slide-to="0" class="active"></li>
+                 <li data-target="#carouselExampleResult" data-slide-to="1"></li>
+                 <li data-target="#carouselExampleResult" data-slide-to="2"></li>
+                 <li data-target="#carouselExampleResult" data-slide-to="3"></li>
+                 <li data-target="#carouselExampleResult" data-slide-to="4"></li>
+                 <li data-target="#carouselExampleResult" data-slide-to="5"></li>
+                 <li data-target="#carouselExampleResult" data-slide-to="6"></li>
+             </ol>
+             <div class="carousel-inner">
+                 <div class="carousel-item active">
+                     <h1 class="title" style="color:red;">{!! $results[0]->category !!}</h1>
+                     <p>{!! $results[0]->drawing_date !!}</p>
+                     <h3 class="description" style="color:green;">{!! $results[0]->numbers !!}</h3>
+                 </div>
+                 <div class="carousel-item">
+                     <h1 class="title" style="color:red;">{!! $results[1]->category !!}</h1>
+                     <p>{!! $results[1]->drawing_date !!}</p>
+                     <h3 class="description" style="color:green;">{!! $results[1]->numbers !!}</h3>
+                 </div>
+                 <div class="carousel-item">
+                     <h1 class="title" style="color:red;">{!! $results[2]->category !!}</h1>
+                     <p>{!! $results[2]->drawing_date !!}</p>
+                     <h3 class="description" style="color:green;">{!! $results[2]->numbers !!} {!!
+                         $results[2]->drawing_date !!}</h3>
+                 </div>
+                 <div class="carousel-item">
+                     <h1 class="title" style="color:red;">{!! $results[3]->category !!}</h1>
+                     <p>{!! $results[3]->drawing_date !!}</p>
+                     <h3 class="description" style="color:green;">{!! $results[3]->numbers !!}</h3>
+                 </div>
+                 <div class="carousel-item">
+                     <h1 class="title" style="color:red;">{!! $results[4]->category !!}</h1>
+                     <p>{!! $results[4]->drawing_date !!}</p>
+                     <h3 class="description" style="color:green;">{!! $results[4]->numbers !!}</h3>
+                 </div>
+                 <div class="carousel-item">
+                     <h1 class="title" style="color:red;">{!! $results[5]->category !!}</h1>
+                     <p>{!! $results[5]->drawing_date !!}</p>
+                     <h3 class="description" style="color:green;">{!! $results[5]->numbers !!}</h3>
+                 </div>
+                 <div class="carousel-item">
+                     <h1 class="title" style="color:red;">{!! $results[6]->category !!}</h1>
+                     <p>{!! $results[6]->drawing_date !!}</p>
+                     <h3 class="description" style="color:green;">{!! $results[6]->numbers !!}</h3>
+                 </div>
+             </div>
+             <a class="carousel-control-prev" href="#carouselExampleResult" role="button" data-slide="prev">
+                 <span class="carousel-control-prev-icon" style="background-color:black; border-radius: 10px 10px"
+                     aria-hidden="true"></span>
+                 <span class="sr-only">Previous</span>
+             </a>
+             <a class="carousel-control-next" href="#carouselExampleResult" role="button" data-slide="next">
+                 <span class="carousel-control-next-icon" style="background-color:black; border-radius: 10px 10px"
+                     aria-hidden="true"></span>
+                 <span class="sr-only">Next</span>
+             </a>
+         </div>
+     </div>
+ </section>
 
  <section id="carrusel" class="carrusel section-bg">
      <div class="container">
@@ -13,14 +76,13 @@
              </ol>
              <div class="carousel-inner">
                  <div class="carousel-item active">
-                     <h1>Mega millons</h1>
-                     <img class="d-block w-100" src="{{ asset('images/slider-02.jpg') }}" alt="First slide">
+                     <img class="d-block w-100" src="{{ asset('images/slider-03.png') }}" alt="First slide">
                  </div>
                  <div class="carousel-item">
-                     <img class="d-block w-100" src="{{ asset('images/slider-09.png') }}" alt="Second slide">
+                     <img class="d-block w-100" src="{{ asset('images/slider-07.png') }}" alt="Second slide">
                  </div>
                  <div class="carousel-item">
-                     <img class="d-block w-100" src="{{ asset('images/slider-09.png') }}" alt="Third slide">
+                     <img class="d-block w-100" src="{{ asset('images/slider-10.png') }}" alt="Third slide">
                  </div>
              </div>
              <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
@@ -91,11 +153,11 @@
              <ul>
                  <li data-aos="fade-up">
                      <i class="bx bx-help-circle icon-help"></i> <a data-toggle="collapse" class="collapse"
-                         href="#faq-list-1">{!! trans('messages.isLegal') !!}<i class="bx bx-chevron-down icon-show"></i><i
-                             class="bx bx-chevron-up icon-close"></i></a>
+                         href="#faq-list-1">{!! trans('messages.isLegal') !!}<i
+                             class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
                      <div id="faq-list-1" class="collapse" data-parent=".faq-list">
                          <p>
-                         {!! trans('messages.isLegal1') !!}
+                             {!! trans('messages.isLegal1') !!}
                          </p>
                      </div>
                  </li>
@@ -106,18 +168,18 @@
                              class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
                      <div id="faq-list-2" class="collapse" data-parent=".faq-list">
                          <p>
-                         {!! trans('messages.howWill1') !!}
+                             {!! trans('messages.howWill1') !!}
                          </p>
                      </div>
                  </li>
 
                  <li data-aos="fade-up" data-aos-delay="200">
                      <i class="bx bx-help-circle icon-help"></i> <a data-toggle="collapse" href="#faq-list-3"
-                         class="collapsed">{!! trans('messages.howDo') !!}<i
-                             class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
+                         class="collapsed">{!! trans('messages.howDo') !!}<i class="bx bx-chevron-down icon-show"></i><i
+                             class="bx bx-chevron-up icon-close"></i></a>
                      <div id="faq-list-3" class="collapse" data-parent=".faq-list">
                          <p>
-                         {!! trans('messages.howDo1') !!}
+                             {!! trans('messages.howDo1') !!}
                          </p>
                      </div>
                  </li>
@@ -128,37 +190,37 @@
                              class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
                      <div id="faq-list-4" class="collapse" data-parent=".faq-list">
                          <p>
-                         {!! trans('messages.canYou1') !!}
+                             {!! trans('messages.canYou1') !!}
                          </p>
                      </div>
                  </li>
 
                  <li data-aos="fade-up" data-aos-delay="400">
                      <i class="bx bx-help-circle icon-help"></i> <a data-toggle="collapse" href="#faq-list-5"
-                         class="collapsed">{!! trans('messages.doYouSell') !!}<i class="bx bx-chevron-down icon-show"></i><i
-                             class="bx bx-chevron-up icon-close"></i></a>
+                         class="collapsed">{!! trans('messages.doYouSell') !!}<i
+                             class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
                      <div id="faq-list-5" class="collapse" data-parent=".faq-list">
                          <p>
-                         {!! trans('messages.doYouSell1') !!}
+                             {!! trans('messages.doYouSell1') !!}
                          </p>
                      </div>
                  </li>
 
                  <li data-aos="fade-up" data-aos-delay="400">
                      <i class="bx bx-help-circle icon-help"></i> <a data-toggle="collapse" href="#faq-list-6"
-                         class="collapsed">{!! trans('messages.doI') !!}<i
-                             class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
+                         class="collapsed">{!! trans('messages.doI') !!}<i class="bx bx-chevron-down icon-show"></i><i
+                             class="bx bx-chevron-up icon-close"></i></a>
                      <div id="faq-list-6" class="collapse" data-parent=".faq-list">
                          <p>
-                         {!! trans('messages.doI1') !!}
+                             {!! trans('messages.doI1') !!}
                          </p>
                      </div>
                  </li>
 
                  <li data-aos="fade-up" data-aos-delay="400">
                      <i class="bx bx-help-circle icon-help"></i> <a data-toggle="collapse" href="#faq-list-7"
-                         class="collapsed">{!! trans('messages.canI') !!}<i
-                             class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
+                         class="collapsed">{!! trans('messages.canI') !!}<i class="bx bx-chevron-down icon-show"></i><i
+                             class="bx bx-chevron-up icon-close"></i></a>
                      <div id="faq-list-7" class="collapse" data-parent=".faq-list">
                          <p>
                              {!! trans('messages.canI1') !!}
@@ -179,11 +241,11 @@
 
                  <li data-aos="fade-up" data-aos-delay="400">
                      <i class="bx bx-help-circle icon-help"></i> <a data-toggle="collapse" href="#faq-list-9"
-                         class="collapsed">{!! trans('messages.whenAre') !!}<i class="bx bx-chevron-down icon-show"></i><i
-                             class="bx bx-chevron-up icon-close"></i></a>
+                         class="collapsed">{!! trans('messages.whenAre') !!}<i
+                             class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
                      <div id="faq-list-9" class="collapse" data-parent=".faq-list">
                          <p>
-                         {!! trans('messages.whenAre1') !!}
+                             {!! trans('messages.whenAre1') !!}
                          </p>
                      </div>
                  </li>
@@ -212,8 +274,8 @@
 
                  <li data-aos="fade-up" data-aos-delay="400">
                      <i class="bx bx-help-circle icon-help"></i> <a data-toggle="collapse" href="#faq-list-12"
-                         class="collapsed">{!! trans('messages.howIsMy') !!}<i class="bx bx-chevron-down icon-show"></i><i
-                             class="bx bx-chevron-up icon-close"></i></a>
+                         class="collapsed">{!! trans('messages.howIsMy') !!}<i
+                             class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
                      <div id="faq-list-12" class="collapse" data-parent=".faq-list">
                          <p>
                              {!! trans('messages.howIsMy1') !!}
@@ -288,11 +350,13 @@
                          </div>
                      </div>
                      <div class="form-group">
-                         <textarea class="form-control" name="comments" rows="5" data-rule="required"
+                         <textarea class="form-control" name="comments" id="comments" rows="5" data-rule="required"
                              data-msg="Please write something for us" placeholder="comments"></textarea>
                          <div class="validate"></div>
                      </div>
-                     <div id="btn_send" class="btn_send text-center"><button type="submit">{!! trans('messages.sendMessage') !!}</button>
+                     <div class="text-center">
+                         <button id="btn_send_contact" type="input" class="btn btn-lg btn-danger">{!!
+                             trans('messages.sendMessage') !!}</button>
                      </div>
                  </div>
              </div>
@@ -301,10 +365,18 @@
 
      </div>
  </section>
- <div class="section-bg"></div>
  {{--Fin contenido pagina principal--}}
  @endsection
 
  @section('scripts')
  <script src="{{ asset('js/function_js.js') }}"></script>
+ <script src="{{ asset('js/js_blade/contact.js') }}"></script>
+
+ <script>
+function getAddContact() {
+    var url = "{{ route('addMenssage') }}";
+    return url;
+}
+ </script>
+
  @endsection

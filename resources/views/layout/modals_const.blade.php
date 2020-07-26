@@ -212,7 +212,7 @@
                                 <div class="icon">
                                     <img alt="" src="{{ asset('images/administrative-panel/mail.png') }}" />
                                 </div>
-                                <h4 class="title"><a href="">Mail</a></h4>
+                                <h4 class="title"><a href="{{ route('adminMailTemplate') }}">Mail</a></h4>
                                 <p class="description">Et harum quidem rerum facilis est et expedita distinctio. Nam
                                     libero tempore, cum soluta nobis est eligendi</p>
                             </div>
@@ -222,7 +222,7 @@
                                 <div class="icon">
                                     <img alt="" src="{{ asset('images/administrative-panel/home.png') }}" />
                                 </div>
-                                <h4 class="title"><a href="">Edith Homepage</a></h4>
+                                <h4 class="title"><a href="{{ route('EdithHome') }}">Edith Homepage</a></h4>
                                 <p class="description">Et harum quidem rerum facilis est et expedita distinctio. Nam
                                     libero tempore, cum soluta nobis est eligendi</p>
                             </div>

@@ -20,7 +20,7 @@ class ResultsController extends Controller
         $data = DB::table('results')
             ->select('*')
             ->get();
-
+            
         return view('results')->with('results', $data);
 
     }

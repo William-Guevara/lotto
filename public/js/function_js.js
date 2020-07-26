@@ -36,7 +36,7 @@ $(window).load(function() {
     $('.flexslider').flexslider({
         animation: "fade",
         controlNav: false,
-        animationSpeed: 1000,
+        animationSpeed: 10000,
         smoothHeight: true
     });
 });

@@ -24,26 +24,6 @@ class BrowseProductsController extends Controller
             ->where('category', $category)
             ->get();
 
-        if ($category == 'Florida Lotto') {
-            $url = 'https://www.lotto.net/es/loto-florida/resultados';
-        }
-        if ($category == 'New York Lotto') {
-            $url = 'https://www.lotto.net/es/loto-de-nueva-york/resultados';
-
-        }
-        if ($category == 'Mega Millions') {
-            $url = 'https://www.lotto.net/es/mega-millions/resultados';
-
-        }
-        if ($category == 'Power ball') {
-            $url = 'https://www.lotto.net/es/powerball/resultados';
-
-        }
-        if ($category == 'Euro Millones') {
-            $url = 'https://www.euromillones.com.es/';
-        } else {
-
-        }
         return view('browse_products')->with(['purchases' => $data, 'category' => $category, 'url' => $url]);
 
     }

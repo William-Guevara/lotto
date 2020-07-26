@@ -1,6 +1,7 @@
 {{-- Vendor JS Files --}}
 {{--<script src="{{ asset('assets/vendor/jquery/jquery.min.js') }}"></script>--}}
 <script src="{{ asset('js/datatables/jquery-3.5.1.min.js') }}"></script>
+<script src="{{ asset('js/datatables/jquery-3.5.1.min.map') }}"></script>
 <script src="{{ asset('js/typeahead/typeahead.bundle.js') }}"></script>
 
 <script src="{{ asset('assets/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>

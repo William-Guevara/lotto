@@ -18,14 +18,17 @@ Route::get('lang/{lang}', 'LanguageController@swap')->name('lang.swap');
 
 Route::post('logout', 'Auth\LoginController@logout')->name('logout');
 
-//Ruta inicio despues del login
-Route::get('/', 'HomeController@index')->name('inicio');
-
 //Rutas topbar
 Route::get('index', function () {
     $user = Auth::user();
-    
-    return view('index')->with(["user" => $user]);
+
+    $data = DB::table('results')
+        ->select('*')
+        ->orderby('drawing_id', 'DESC')
+        ->limit(7)
+        ->get();
+
+    return view('index')->with(["user" => $user, 'results' => $data]);
 })->name('inicio'); // Vista de inicio
 
 Route::post('/contact_us/add', 'ContactUsController@AddMenssage')->name('addMenssage'); //Agregar mensaje
@@ -63,12 +66,15 @@ Route::get('Carrito', 'BrowseProductsController@ShowCart')->name('Carrito'); //A
 Route::post('DeleteToCart', 'BrowseProductsController@DeleteToCart')->name('DeleteToCart'); //Eliminar un elemento del carro
 Route::post('BorrarCarrito', 'BrowseProductsController@clearCart')->name('BorrarCarrito'); //Eliminar los datos del carrito
 Route::get('checkout', 'BrowseProductsController@checkout'); //Generar compra o transaccion
-//VITRINA:: muestra de productos a comercializar
-//PRUEBA MÓDULO DE TRANSFERENCIAS
 
+//Correos electronicos 
+Route::get('adminMailTemplate', 'AdminMailController@ShowTemplates')->name('adminMailTemplate'); //Vista de los templates del email
+Route::get('adminMailTemplate/{id}', 'AdminMailController@SearchInfo'); //Carga la informacion del producto seleccionado
+Route::get('adminMailTemplate/{id}/delete', 'AdminMailController@DeleteadminMailTemplate'); //Eliminar producto
+Route::post('adminMailTemplate/control', 'AdminMailController@ProductControl')->name('adminMailTemplate_control'); //Actualiza o crea un producto
 
-Route::get('Carrito/{portfolio}', 'CommercialController@searchProduct'); //Agregar Cantidad de productos q se nceuntran en carrito
-Route::get('DetailExchange/{portfolio}', 'CommercialController@ShowDetailCart'); //muestra el detalle de los productos a trasferir que se enceuntran en el carrito
+//Correos electronicos 
+Route::get('edithHome', 'EdithHomeController@ShowTemplates')->name('EdithHome'); //Vista de los templates del email
 
 
 
