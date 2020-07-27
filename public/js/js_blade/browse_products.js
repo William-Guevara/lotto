@@ -19,6 +19,7 @@ $(function (event) {
             return;
         }
         let total = price * quantity;
+        total_ = Math.round(total * 100)/100;
         let _token = $("._token").val();
 
         $.ajax({
@@ -31,7 +32,7 @@ $(function (event) {
                 productName: name_en,
                 productPrice: price,
                 quantity: quantity,
-                total: total,
+                total: total_,
             }),
             contentType: "application/json; charset=utf-8",
             dataType: "json",

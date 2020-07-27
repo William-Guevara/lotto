@@ -94,7 +94,7 @@
                                 <div class="icon">
                                     <img alt="" src="{{ asset('images/administrative-panel/lottery_tickets.jpg') }}" />
                                 </div>
-                                <h4 class="title"><a href="">Add tickets</a></h4>
+                                <h4 class="title"><a href="{{ route('adminTickets') }}">Add tickets</a></h4>
                                 <p class="description">Duis aute irure dolor in reprehenderit in voluptate velit esse
                                     cillum dolore eu fugiat nulla pariatur</p>
                             </div>

@@ -58,6 +58,8 @@ Route::get('purchases', 'PurchasesController@ShowPurchases')->name('purchases');
 
 //vistas Loterias administrador
 Route::get('adminPurchase/{category}', 'AdminPurchasesController@ShowPurchases')->name('adminPurchase'); //Vista de compras
+//vistas agregar tiketes al usuario
+Route::get('adminTickets', 'AdminTicketsController@ShowPurchases')->name('adminTickets'); //Vista para agregar ticketes
 
 //vistas Loterias cliente cart
 Route::get('browseProducts/{category}', 'BrowseProductsController@ShowBrowseProduct')->name('browseProducts'); //Vista de compras
