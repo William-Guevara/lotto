@@ -369,7 +369,7 @@
  @endsection
 
  @section('scripts')
- <script src="{{ asset('js/function_js.js') }}"></script>
+ <!--<script src="{{ asset('js/function_js.js') }}"></script>-->
  <script src="{{ asset('js/js_blade/contact.js') }}"></script>
 
  <script>

@@ -24,9 +24,9 @@
                     <h5 class="title">
                         ${!! $purchas->price !!}
                         @if((substr($purchas->name_en, -7) == 'Drawing' || (substr($purchas->name_es, -14)) == 'Proximo Sorteo'))
-                        <input type="number" min="5" class="quantity input_quantity {!! $purchas->product_id !!}">
+                        <input type="number" min="5" class="quantity input_quantity {!! $purchas->product_id !!} intLimitTextBox">
                         @else
-                        <input type="number" min="1" class="quantity input_quantity {!! $purchas->product_id !!}">
+                        <input type="number" min="1" class="quantity input_quantity {!! $purchas->product_id !!} intLimitTextBox">
                         @endif
                         <button data-product_id="{!! $purchas->product_id !!}"
                             data-description_en="{!! $purchas->description_en !!}"

@@ -24,7 +24,7 @@ class BrowseProductsController extends Controller
             ->where('category', $category)
             ->get();
 
-        return view('browse_products')->with(['purchases' => $data, 'category' => $category, 'url' => $url]);
+        return view('browse_products')->with(['purchases' => $data, 'category' => $category]);
 
     }
 

@@ -32,7 +32,7 @@ $(document).ready(function() {
 /*	FlexSlider
 /*----------------------------------------------------*/
 
-$(window).load(function() {
+$(window).on("load",function() {
     $('.flexslider').flexslider({
         animation: "fade",
         controlNav: false,

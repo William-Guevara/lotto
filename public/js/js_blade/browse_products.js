@@ -6,8 +6,9 @@ $(function (event) {
         let name_en = $(this).data("name_en");
         let price = $(this).data("price");
         let quantity = $("." + product_id).val();
-        if (quantity == "") {
-            swal("Select quantity", {
+        let quantity_min = $("." + product_id).attr('min');
+        if (quantity == "" || quantity < quantity_min ) {
+            swal("Invalid amount", {
                 icon: "error",
                 buttons: {
                     confirm: {
