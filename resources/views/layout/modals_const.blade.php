@@ -104,7 +104,7 @@
                                 <div class="icon">
                                     <img alt="" src="{{ asset('images/administrative-panel/lottery_tickets.jpg') }}" />
                                 </div>
-                                <h4 class="title"><a href="">View tickets</a></h4>
+                                <h4 class="title"><a href="{{ route('ViewTickets') }}">View tickets</a></h4>
                                 <p class="description">Excepteur sint occaecat cupidatat non proident, sunt in culpa
                                     qui officia deserunt mollit anim id est laborum</p>
                             </div>

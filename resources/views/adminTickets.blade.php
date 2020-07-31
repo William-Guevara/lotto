@@ -23,20 +23,26 @@
             <tbody>
                 @foreach($purchases as $purchas)
                 <tr>
-                    <td>{!! $purchas->name !!}</td>
-                    <td>{!! $purchas->owed !!}</td>
-                    <td>{!! $purchas->total_tickets !!}</td>
-                    <td>{!! $purchas->total_tickets !!}</td>
-                    <td>{!! $purchas->category !!}</td>
-                    <td>
-                        <input type="date" class="form-control">
-                    </td>
-                    <td>
-                        <input type="file" class="form-control">
-                    </td>
-                    <td>
-                        <button class="btn btn-success"><i class="bx bx-send"></i></button>
-                    </td>
+                    <form action="{{ route('AddTicket') }}" method="POST" enctype='multipart/form-data'>
+                        {{ csrf_field() }}
+                        <td>{!! $purchas->name !!}</td>
+                        <td>{!! $purchas->owed !!}</td>
+                        <td>{!! $purchas->total_tickets !!}</td>
+                        <td><input name="num" class="input_quantity" type="num" min="1" value="{!! $purchas->total_tickets !!}"></td>
+                        <td>
+                            <input name="category" type="text" value="{!! $purchas->category !!}"></td>
+                        <td>
+                            <input name="date" type="date" class="form-control">
+                        </td>
+                        <td>
+                            <input name="file_" type="file" class="form-control">
+                        </td>
+                        <td>
+                            <input name="user_id" value="{!! $purchas->user_id !!}">
+                            <input name="purchased_product_id" value="{!! $purchas->purchased_product_id !!}">
+                            <input class="btn btn-success" type="submit" value="Enviar">
+                        </td>
+                    </form>
                 </tr>
                 @endforeach
             </tbody>

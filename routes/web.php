@@ -19,6 +19,18 @@ Route::get('lang/{lang}', 'LanguageController@swap')->name('lang.swap');
 Route::post('logout', 'Auth\LoginController@logout')->name('logout');
 
 //Rutas topbar
+//Rutas topbar
+Route::get('/', function () {
+    $user = Auth::user();
+
+    $data = DB::table('results')
+        ->select('*')
+        ->orderby('drawing_id', 'DESC')
+        ->limit(7)
+        ->get();
+
+    return view('index')->with(["user" => $user, 'results' => $data]);
+})->name('inicio'); // Vista de inicio
 Route::get('index', function () {
     $user = Auth::user();
 
@@ -60,6 +72,10 @@ Route::get('purchases', 'PurchasesController@ShowPurchases')->name('purchases');
 Route::get('adminPurchase/{category}', 'AdminPurchasesController@ShowPurchases')->name('adminPurchase'); //Vista de compras
 //vistas agregar tiketes al usuario
 Route::get('adminTickets', 'AdminTicketsController@ShowPurchases')->name('adminTickets'); //Vista para agregar ticketes
+Route::post('admin/AddTicket', 'AdminTicketsController@AddTicket')->name('AddTicket');
+Route::get('admin/ViewTicket', 'AdminTicketsController@ViewTicket')->name('ViewTickets');
+
+
 
 //vistas Loterias cliente cart
 Route::get('browseProducts/{category}', 'BrowseProductsController@ShowBrowseProduct')->name('browseProducts'); //Vista de compras
