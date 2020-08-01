@@ -36,7 +36,9 @@
                     </div>
                     {{--Fin Tabla en modal--}}
                     <div class="modal-footer no-bd">
-                        <button type="button" id="btnSendCart" class="btn btn-success">Realizar transaccion</button>
+                        <a href="{{ route('verifyCart') }}">
+                            <button type="button" class="btn btn-success">Verificar transacción</button>
+                        </a>
                         <button type="button" id="btnClearCart" class="btn btn-danger">Borrar carrito</button>
                     </div>
                 </div>

@@ -38,7 +38,7 @@
                 @foreach($images as $ima)
                 <div class="col-lg-4 col-md-6 d-flex align-items-stretch aos-init aos-animate" data-aos="fade-up">
                     <article class="member">
-
+                    
                         <div class="member-img">
                             <img src="{{ asset($ima->src_image)  }}" alt="{!! $ima->src_image !!}" class="img-fluid">
                         </div>

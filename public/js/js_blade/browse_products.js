@@ -243,7 +243,7 @@ $(document).ready(function () {
                 targets: [1],
                 render: function (data, type, row) {
                     return (
-                        '<td><textarea class="textarea" disabled>' +
+                        '<td><textarea style="width: 100%;" disabled>' +
                         data +
                         "</textarea></td>"
                     );

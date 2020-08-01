@@ -76,15 +76,14 @@ Route::post('admin/AddTicket', 'AdminTicketsController@AddTicket')->name('AddTic
 Route::get('admin/ViewTicket', 'AdminTicketsController@ViewTicket')->name('ViewTickets');
 Route::get('admin/ViewTicket/{category}/{drawing_date}', 'AdminTicketsController@ViewTicketLoad')->name('ViewTicketLoad');
 
-
-
 //vistas Loterias cliente cart
 Route::get('browseProducts/{category}', 'BrowseProductsController@ShowBrowseProduct')->name('browseProducts'); //Vista de compras
 Route::post('addToCart', 'BrowseProductsController@guardarProducto')->name('addToCart'); //Guardar cookie
 Route::get('Carrito', 'BrowseProductsController@ShowCart')->name('Carrito'); //Agregar datos a modal Carrito
 Route::post('DeleteToCart', 'BrowseProductsController@DeleteToCart')->name('DeleteToCart'); //Eliminar un elemento del carro
 Route::post('BorrarCarrito', 'BrowseProductsController@clearCart')->name('BorrarCarrito'); //Eliminar los datos del carrito
-Route::get('checkout', 'BrowseProductsController@checkout'); //Generar compra o transaccion
+Route::get('verifyCart', 'VerifyCartController@ShowCart')->name('verifyCart'); //Verificar carro de compras
+Route::get('verifyTransaction', 'VerifyCartController@verifyTransaction')->name('verifyTransaction'); //Verificar respuesta de transaccion
 
 //Correos electronicos 
 Route::get('adminMailTemplate', 'AdminMailController@ShowTemplates')->name('adminMailTemplate'); //Vista de los templates del email

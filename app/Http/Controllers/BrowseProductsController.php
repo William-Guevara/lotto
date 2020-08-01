@@ -110,6 +110,7 @@ class BrowseProductsController extends Controller
 
         return response()->json(array_values($cart));
     }
+    
     //ENVIO CARRITO DE COMPRAS
     public function checkout()
     {
