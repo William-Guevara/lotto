@@ -1,0 +1,7 @@
+/*Cambios en base de datos*/
+alter table ticket_images change image image mediumblob;
+alter table ticket_images change image_size image_size varchar(25);
+alter table ticket_images add column src_image varchar(150)  after image;
+
+/*fantante en adminTicket*/
+Descontar los tiketes enviados 

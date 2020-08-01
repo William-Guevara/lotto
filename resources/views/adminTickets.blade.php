@@ -38,8 +38,8 @@
                             <input name="file_" type="file" class="form-control">
                         </td>
                         <td>
-                            <input name="user_id" value="{!! $purchas->user_id !!}">
-                            <input name="purchased_product_id" value="{!! $purchas->purchased_product_id !!}">
+                            <input type="hidden" name="user_id" value="{!! $purchas->user_id !!}">
+                            <input type="hidden" name="purchased_product_id" value="{!! $purchas->purchased_product_id !!}">
                             <input class="btn btn-success" type="submit" value="Enviar">
                         </td>
                     </form>

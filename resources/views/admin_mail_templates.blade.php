@@ -1,17 +1,12 @@
 @extends('start')
 
-@section('head')
-
-<link rel="stylesheet" href="{{ asset('sceditor-2.1.3/minified/themes/default.min.css') }}" id="theme-style" />
-
-@endsection
-
 @section('content')
 
 <section id="seccion_data" class="seccion_data">
     <div class="section-title">
         <h2 data-aos="fade-up">Emails</h2>
         <p data-aos="fade-up">This section allows you to view mail templates.</p>
+        <input type="hidden" class="_token" value="{{ csrf_token() }}">
     </div>
     <div class="container">
         <button data-option="create" data-tooltip="tooltip" title="Add user" data-toggle="modal"

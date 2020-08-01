@@ -30,6 +30,9 @@
 
 <link href="{{ asset('css/style.css') }}" rel="stylesheet">
 
+<link rel="stylesheet" href="{{ asset('sceditor-2.1.3/minified/themes/default.min.css') }}" id="theme-style">
+
+
 
 <!-- =======================================================
 * Template Name: Flexor - v2.2.0

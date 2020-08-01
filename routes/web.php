@@ -74,6 +74,7 @@ Route::get('adminPurchase/{category}', 'AdminPurchasesController@ShowPurchases')
 Route::get('adminTickets', 'AdminTicketsController@ShowPurchases')->name('adminTickets'); //Vista para agregar ticketes
 Route::post('admin/AddTicket', 'AdminTicketsController@AddTicket')->name('AddTicket');
 Route::get('admin/ViewTicket', 'AdminTicketsController@ViewTicket')->name('ViewTickets');
+Route::get('admin/ViewTicket/{category}/{drawing_date}', 'AdminTicketsController@ViewTicketLoad')->name('ViewTicketLoad');
 
 
 
@@ -87,7 +88,7 @@ Route::get('checkout', 'BrowseProductsController@checkout'); //Generar compra o 
 
 //Correos electronicos 
 Route::get('adminMailTemplate', 'AdminMailController@ShowTemplates')->name('adminMailTemplate'); //Vista de los templates del email
-Route::get('adminMailTemplate/{id}', 'AdminMailController@SearchInfo'); //Carga la informacion del producto seleccionado
+Route::post('adminMailTemplate/{id}', 'AdminMailController@SearchInfo'); //Carga la informacion del producto seleccionado
 Route::get('adminMailTemplate/{id}/delete', 'AdminMailController@DeleteadminMailTemplate'); //Eliminar producto
 Route::post('adminMailTemplate/control', 'AdminMailController@ProductControl')->name('adminMailTemplate_control'); //Actualiza o crea un producto
 

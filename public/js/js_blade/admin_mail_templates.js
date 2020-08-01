@@ -22,6 +22,7 @@ $(function (event) {
             }
             var option = $(e.relatedTarget).data("option");
             var template = $(e.relatedTarget).data("template");
+            var _token = $('._token').val();
             $("#option_select").val(option);
             if (option == "create") {
                 $("#tittle_modal").text("Register template");
@@ -31,9 +32,12 @@ $(function (event) {
                 $("#tittle_modal").text("Update template");
                 //var area = $(e.relatedTarget).data('area');
                 $.ajax({
-                    type: "GET",
+                    type: "POST",
                     url: "adminMailTemplate/" + template,
                     contentType: "application/json; charset=utf-8",
+                    data: JSON.stringify({
+                        _token: _token
+                    }),
                     dataType: "json",
                     async: true,
                     success: function (response) {
