@@ -66,7 +66,7 @@ class RegisterController extends Controller
     // LOS USUARIOS DE MANTENIMIENTO SIEMPRE TENDRÁN UN ROL = 1 Y UNA INSTITUCIÓN EN NULO
     protected function create(array $data)
     {
- 
+
         return User::create([
             'email'=> $data['email'],
             'email2'=> null,
@@ -76,13 +76,14 @@ class RegisterController extends Controller
             'city'=> $data['city'],
             'state'=> $data['state'],
             'zip_code'=> $data['zip_code'],
-            'country'=> 1,//$data['country'],
+            'country'=> $data['country'],
             'phone'=> $data['phone'],
             'fax'=> $data['fax'],
             'gender'=> $data['gender'],
             'newsletter'=> $data['newsletter'],
             'language'=> $data['language'],
-            'password' => Hash::make($data['password'])
+            'password' => Hash::make($data['password'])            
         ]);
+        
     }
 }

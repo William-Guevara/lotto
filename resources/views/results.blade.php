@@ -56,15 +56,20 @@
                 <div class="container">
                     <div class="section-title">
                         <h2 id="tittle_modal" data-aos="fade-up"></h2>
-                        <a href="https://www.lotto.net/es/loto-florida/resultados" target="_blank">Result Florida Lotto,
+                        <p class="description">RESULTS</p>
+                        <a href="https://www.lotto.net/es/loto-florida/resultados" target="_blank"> Florida
+                            Lotto,
                         </a>
-                        <a href="https://www.lotto.net/es/loto-de-nueva-york/resultados" target="_blank">Result Euro
+                        <a href="https://www.lotto.net/es/loto-de-nueva-york/resultados" target="_blank">Result
+                            Euro
                             Millones, </a>
-                        <a href="https://www.lotto.net/es/mega-millions/resultados" target="_blank">Result Mega
-                            Millions, </a><br />
-                        <a href="https://www.lotto.net/es/powerball/resultados" target="_blank">Result New York Lotto,
+                        <a href="https://www.lotto.net/es/mega-millions/resultados" target="_blank"> Mega
+                            Millions, </a>
+                            </br>
+                        <a href="https://www.lotto.net/es/powerball/resultados" target="_blank"> New York Lotto,
                         </a>
-                        <a href="https://www.euromillones.com.es'" target="_blank">Result Power Ball</a>
+                        <a href="https://www.euromillones.com.es" target="_blank"> Power Ball,</a>
+                        <a href="https://www.lotto.net/es/california-super-lotto/resultados" target="_blank"> California Lotto</a>
                         {{--<a href="{!! $url !!}" target="_blank">{!! trans('messages.linkLotto') !!}</a>--}}
                         <input type="hidden" class="campos" id="option_select">
                         <input type="hidden" class="campos" id="drawing_id">
@@ -76,12 +81,12 @@
                                 <div class="col-md-6 form-group">
                                     <label>Category</label>
                                     <select class="form-control campos" id="category">
-                                        {{--<option value="California Lotto">California Lotto</option>--}}
-                                        <option value="Euro Millones">Euro Millones</option>
                                         <option value="Florida Lotto">Florida Lotto</option>
+                                        <option value="Euro Millones">Euro Millones</option>
                                         <option value="Mega Millions">Mega Millions</option>
                                         <option value="New York Lotto">New York Lotto</option>
                                         <option value="Power Ball">Power Ball</option>
+                                        <option value="California Lotto">California Lotto</option>
                                         {{--<option value="Super Enalotto">Super Enalotto</option>--}}
                                         {{--<option value="Euro Jackpot">Euro Jackpot</option>--}}
                                     </select>

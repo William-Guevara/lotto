@@ -39,6 +39,7 @@
                 <li><a style="color: red" href="{{ route('login') }}">{!! trans('messages.login') !!}</a></li>
                 <li><a style="color: red" href="{{ route('register') }}">{!! trans('messages.register') !!}</a></li>
                 @else
+                <li><a style="color: red" href="{{ route('myAccount') }}">{!! trans('messages.account') !!}</a></li>
                 <li><a style="color: red" href="{{ route('logout') }}">{!! trans('messages.logout') !!}</a></li>
                 @endif
                 @if(auth()->user())

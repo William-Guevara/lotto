@@ -45,14 +45,15 @@ Route::get('index', function () {
 
 Route::post('/contact_us/add', 'ContactUsController@AddMenssage')->name('addMenssage'); //Agregar mensaje
 //Rutas de administrador
-Route::get('/administrador', 'AdministratorController@ShowOptions')->name('panel_administracion'); //Panel administrativo: mostrar opciones
 
-//Usuarios
+//Usuarios administrador
 Route::get('users', 'UserController@ShowUser')->name('users'); //Vista de usuarios
 Route::get('users/{id}', 'UserController@SearchInfo'); //Carga la informacion del cliente seleccionado a las modales Actualizar cliente y Eliminar cliente
 Route::get('users/{id}/delete', 'UserController@DeleteUser'); //Eliminar usuario
 Route::post('users/control', 'UserController@UserControl')->name('user_control'); //Actualiza o crea un usuario
-
+//Usuario cliente 
+Route::get('myAccount', 'MyAccountController@ShowDetail')->name('myAccount'); //Vista del perfil
+Route::get('myAccount/update/password', 'MyAccountController@updatePass')->name('updatePass');
 //Productos
 Route::get('products', 'ProductController@ShowProducts')->name('products'); //Vista de productos
 Route::get('products/{id}', 'ProductController@SearchInfo'); //Carga la informacion del producto seleccionado

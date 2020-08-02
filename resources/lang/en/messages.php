@@ -14,6 +14,11 @@ return [
     'logout' => 'Logout',
     'adminPanel' => 'Admin Panel',
     'last_result' =>'Last Result',
+    'account'=> 'My Account',
+    'update'=> 'Update',
+    'purchases'=> 'Purchases',
+    'updatePass'=> 'Update Password',
+    'currentPassword' => 'Current Password',
     //About
     'buyTicket' => 'Comprar Ticketes',
     'buyTicket1' => '1- We buy for you a random Lotto ticket also known as Quick Pick of the selected Lotteries. We will personalize the ticket with your name ensuring your property. You and only you can cash your price.',

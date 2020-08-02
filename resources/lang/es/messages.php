@@ -14,6 +14,11 @@ return [
     'logout' => 'Cerrar Sesión',
     'adminPanel' => 'Panel Administrador',
     'last_result' =>'Ultimo Resultado',
+    'account'=> 'Mi Cuenta',
+    'update'=> 'Actualizar',
+    'purchases'=> 'Compras',
+    'updatePass'=> 'Acctualiza tu contraseña',
+    'currentPassword' => 'Contraseña actual',
     //Acerca de
     'buyTicket' => 'Comprar Ticketes',
     'buyTicket1' => '1- Compramos para usted un boleto de lotería al azar también conocido como Quick Pick de las loterías seleccionadas. Personalizaremos el boleto con su nombre asegurando su propiedad. Usted y solo usted puede cobrar su precio.',

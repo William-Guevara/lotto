@@ -18,9 +18,7 @@ class UserController extends Controller
         $user = Auth::user();
 
         $data = DB::table('users')
-        //->join('city', 'city.id', '=', 'ciudad')
             ->select('user_id', 'email', 'fname', 'lname')
-//            ->orderBy('fname like [a-Z][a-Z]% END')
             ->get();
 
         return view('users')->with('users', $data);
@@ -124,6 +122,43 @@ class UserController extends Controller
                     'active' => 1,
                 ]);
             return response()->json(['message' => 'Updated']);
+        }
+        if ($option_select == 'update_client') {
+            $user = Auth::user();
+            $Email = $request->input('email');
+            $Email2 = $request->input('email2');
+            $FirstName = $request->input('fname');
+            $LastName = $request->input('lname');
+            $Address = $request->input('address');
+            $City = $request->input('city');
+            $State = $request->input('state');
+            $ZipCode = $request->input('zip_code');
+            if ($ZipCode == "") {
+                $ZipCode = 0000;
+            }
+            $Phone = $request->input('phone');
+            $Fax = $request->input('fax');
+            $Gender = $request->input('gender');
+            $Newsletter = $request->input('newsletter');
+            $Language = $request->input('language');
+            DB::table('users')
+                ->where('user_id', $user->user_id)
+                ->update([
+                    'email' => $Email,
+                    'email2' => $Email2,
+                    'fname' => $FirstName,
+                    'lname' => $LastName,
+                    'address' => $Address,
+                    'city' => $City,
+                    'state' => $State,
+                    'zip_code' => $ZipCode,
+                    'phone' => $Phone,
+                    'fax' => $Fax,
+                    'gender' => $Gender,
+                    'newsletter' => $Newsletter,
+                    'language' => $Language,
+                ]);
+            return redirect()->route('myAccount');
         }
 
         return response()->json(['message' => 'No se registro ningun cambio'], 400);
