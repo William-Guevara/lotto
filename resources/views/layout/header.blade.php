@@ -32,6 +32,7 @@
                                 ball</a></li>
                         <li><a style="cursor:pointer" class="lotto_category_client" data-category="Euro Millones">Euro
                                 Millones</a></li>
+                        <li><a style="cursor:pointer" class="lotto_category_client" data-category="California Lotto">California Lotto</a></li>
                     </ul>
                 </li>
                 @if(auth()->check() == false)
@@ -41,10 +42,10 @@
                 <li><a style="color: red" href="{{ route('logout') }}">{!! trans('messages.logout') !!}</a></li>
                 @endif
                 @if(auth()->user())
-                    @if(auth()->user()->level == 10)
-                        <li><a data-toggle="modal" data-target="#modalPanel" style="color:red; cursor:pointer">
+                @if(auth()->user()->level == 10)
+                <li><a data-toggle="modal" data-target="#modalPanel" style="color:red; cursor:pointer">
                         {!! trans('messages.adminPanel') !!}</a></li>
-                    @endif
+                @endif
                 @endif
                 <li><a data-toggle="modal" data-target="#modalShopping" style="cursor:pointer">
                         <i class="bx bxs-cart" style="font-size:25px" aria-hidden="true"></i>
@@ -60,8 +61,8 @@
                         @else
                         @endif
                         @endforeach
-                            {{--<img src="{{ asset('images/spain.png') }}" alt="Español" />
-                            <img src="{{ asset('images/usa.png') }}" alt="English" />--}}
+                        {{--<img src="{{ asset('images/spain.png') }}" alt="Español" />
+                        <img src="{{ asset('images/usa.png') }}" alt="English" />--}}
                     </div>
                     @endif
 

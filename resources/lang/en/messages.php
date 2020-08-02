@@ -13,6 +13,7 @@ return [
     'register' => 'Register',
     'logout' => 'Logout',
     'adminPanel' => 'Admin Panel',
+    'last_result' =>'Last Result',
     //About
     'buyTicket' => 'Comprar Ticketes',
     'buyTicket1' => '1- We buy for you a random Lotto ticket also known as Quick Pick of the selected Lotteries. We will personalize the ticket with your name ensuring your property. You and only you can cash your price.',
@@ -83,5 +84,6 @@ return [
    'Newsletter' => 'Newsletter',
    'Lenguage' => 'Lenguage',
    'Register' => 'Register',
+
 
 ];

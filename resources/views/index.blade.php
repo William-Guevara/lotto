@@ -2,86 +2,73 @@
  <!--#c62020
  #ff5821-->
  @section('content')
- <section id="carrusel" class="carrusel" style="height: 200px;text-align: center;">
-     <div class="container">
-         <div id="carouselExampleResult" class="carousel slide" data-ride="carousel">
-             <ol class="carousel-indicators">
-                 <li data-target="#carouselExampleResult" data-slide-to="0" class="active"></li>
-                 <li data-target="#carouselExampleResult" data-slide-to="1"></li>
-                 <li data-target="#carouselExampleResult" data-slide-to="2"></li>
-                 <li data-target="#carouselExampleResult" data-slide-to="3"></li>
-                 <li data-target="#carouselExampleResult" data-slide-to="4"></li>
-                 <li data-target="#carouselExampleResult" data-slide-to="5"></li>
-                 <li data-target="#carouselExampleResult" data-slide-to="6"></li>
-             </ol>
-             <div class="carousel-inner">
-                 <div class="carousel-item active">
-                     <h1 class="title" style="color:red;">{!! $results[0]->category !!}</h1>
-                     <p>{!! $results[0]->drawing_date !!}</p>
-                     <h3 class="description" style="color:green;">{!! $results[0]->numbers !!}</h3>
-                 </div>
-                 <div class="carousel-item">
-                     <h1 class="title" style="color:red;">{!! $results[1]->category !!}</h1>
-                     <p>{!! $results[1]->drawing_date !!}</p>
-                     <h3 class="description" style="color:green;">{!! $results[1]->numbers !!}</h3>
-                 </div>
-                 <div class="carousel-item">
-                     <h1 class="title" style="color:red;">{!! $results[2]->category !!}</h1>
-                     <p>{!! $results[2]->drawing_date !!}</p>
-                     <h3 class="description" style="color:green;">{!! $results[2]->numbers !!} {!!
-                         $results[2]->drawing_date !!}</h3>
-                 </div>
-                 <div class="carousel-item">
-                     <h1 class="title" style="color:red;">{!! $results[3]->category !!}</h1>
-                     <p>{!! $results[3]->drawing_date !!}</p>
-                     <h3 class="description" style="color:green;">{!! $results[3]->numbers !!}</h3>
-                 </div>
-                 <div class="carousel-item">
-                     <h1 class="title" style="color:red;">{!! $results[4]->category !!}</h1>
-                     <p>{!! $results[4]->drawing_date !!}</p>
-                     <h3 class="description" style="color:green;">{!! $results[4]->numbers !!}</h3>
-                 </div>
-                 <div class="carousel-item">
-                     <h1 class="title" style="color:red;">{!! $results[5]->category !!}</h1>
-                     <p>{!! $results[5]->drawing_date !!}</p>
-                     <h3 class="description" style="color:green;">{!! $results[5]->numbers !!}</h3>
-                 </div>
-                 <div class="carousel-item">
-                     <h1 class="title" style="color:red;">{!! $results[6]->category !!}</h1>
-                     <p>{!! $results[6]->drawing_date !!}</p>
-                     <h3 class="description" style="color:green;">{!! $results[6]->numbers !!}</h3>
-                 </div>
-             </div>
-             <a class="carousel-control-prev" href="#carouselExampleResult" role="button" data-slide="prev">
-                 <span class="carousel-control-prev-icon" style="background-color:black; border-radius: 10px 10px"
-                     aria-hidden="true"></span>
-                 <span class="sr-only">Previous</span>
-             </a>
-             <a class="carousel-control-next" href="#carouselExampleResult" role="button" data-slide="next">
-                 <span class="carousel-control-next-icon" style="background-color:black; border-radius: 10px 10px"
-                     aria-hidden="true"></span>
-                 <span class="sr-only">Next</span>
-             </a>
-         </div>
-     </div>
- </section>
+
 
  <section id="carrusel" class="carrusel section-bg">
      <div class="container">
+         </br>
+         </br>
+
          <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
              <ol class="carousel-indicators">
                  <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
                  <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
                  <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+                 <li data-target="#carouselExampleIndicators" data-slide-to="3"></li>
+                 <li data-target="#carouselExampleIndicators" data-slide-to="4"></li>
+                 <li data-target="#carouselExampleIndicators" data-slide-to="5"></li>
+                 <li data-target="#carouselExampleIndicators" data-slide-to="6"></li>
+                 <li data-target="#carouselExampleIndicators" data-slide-to="7"></li>
              </ol>
              <div class="carousel-inner">
                  <div class="carousel-item active">
-                     <img class="d-block w-100" src="{{ asset('images/slider-03.png') }}" alt="First slide">
+                     <h1 data-aos="fade-up" class="title" style="color:red;">{!! trans('messages.last_result') !!}</h1>
+                     <h3 data-aos="fade-up" class="title">{!! $results[0]->category !!}</h3>
+                     <p data-aos="fade-up">{!! $results[0]->drawing_date !!}</p>
+                     <h3 data-aos="fade-up" class="description" style="color:green;">{!! $results[0]->numbers !!}</h3>
+                     <img data-aos="fade-up" class="d-block w-100" src="{{ asset('images/slider-03.png') }}"
+                         alt="First slide">
                  </div>
                  <div class="carousel-item">
+                     <h1 class="title" style="color:red;">{!! trans('messages.last_result') !!}</h1>
+                     <h3 class="title">{!! $results[1]->category !!}</h3>
+                     <p>{!! $results[1]->drawing_date !!}</p>
+                     <h3 class="description" style="color:green;">{!! $results[1]->numbers !!}</h3>
                      <img class="d-block w-100" src="{{ asset('images/slider-07.png') }}" alt="Second slide">
                  </div>
                  <div class="carousel-item">
+                     <h1 class="title" style="color:red;">{!! trans('messages.last_result') !!}</h1>
+                     <h3 class="title">{!! $results[2]->category !!}</h3>
+                     <p>{!! $results[2]->drawing_date !!}</p>
+                     <h3 class="description" style="color:green;">{!! $results[2]->numbers !!}</h3>
+                     <img class="d-block w-100" src="{{ asset('images/slider-10.png') }}" alt="Third slide">
+                 </div>
+                 <div class="carousel-item">
+                     <h1 class="title" style="color:red;">{!! trans('messages.last_result') !!}</h1>
+                     <h3 class="title">{!! $results[3]->category !!}</h3>
+                     <p>{!! $results[3]->drawing_date !!}</p>
+                     <h3 class="description" style="color:green;">{!! $results[3]->numbers !!}</h3>
+                     <img class="d-block w-100" src="{{ asset('images/slider-07.png') }}" alt="Second slide">
+                 </div>
+                 <div class="carousel-item">
+                     <h1 class="title" style="color:red;">{!! trans('messages.last_result') !!}</h1>
+                     <h3 class="title">{!! $results[4]->category !!}</h3>
+                     <p>{!! $results[4]->drawing_date !!}</p>
+                     <h3 class="description" style="color:green;">{!! $results[4]->numbers !!}</h3>
+                     <img class="d-block w-100" src="{{ asset('images/slider-10.png') }}" alt="Third slide">
+                 </div>
+                 <div class="carousel-item">
+                     <h1 class="title" style="color:red;">{!! trans('messages.last_result') !!}</h1>
+                     <h3 class="title">{!! $results[5]->category !!}</h3>
+                     <p>{!! $results[5]->drawing_date !!}</p>
+                     <h3 class="description" style="color:green;">{!! $results[5]->numbers !!}</h3>
+                     <img class="d-block w-100" src="{{ asset('images/slider-07.png') }}" alt="Second slide">
+                 </div>
+                 <div class="carousel-item">
+                     <h1 class="title" style="color:red;">{!! trans('messages.last_result') !!}</h1>
+                     <h3 class="title">{!! $results[6]->category !!}</h3>
+                     <p>{!! $results[6]->drawing_date !!}</p>
+                     <h3 class="description" style="color:green;">{!! $results[6]->numbers !!}</h3>
                      <img class="d-block w-100" src="{{ asset('images/slider-10.png') }}" alt="Third slide">
                  </div>
              </div>
