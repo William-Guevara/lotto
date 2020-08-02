@@ -22,7 +22,8 @@
                 </div>
             </div>
             <div class="form-group row">
-                <label for="password" class="col-md-4 col-form-label text-md-right">{!! trans('messages.Password') !!}</label>
+                <label for="password" class="col-md-4 col-form-label text-md-right">{!! trans('messages.Password')
+                    !!}</label>
                 <div class="col-md-6">
                     <input id="password" type="password" class="form-control @error('password') is-invalid @enderror"
                         name="password" required autocomplete="new-password">
@@ -34,15 +35,16 @@
                 </div>
             </div>
             <div class="form-group row">
-                <label for="password-confirm"
-                    class="col-md-4 col-form-label text-md-right">{!! trans('messages.ConfirmPassword') !!}</label>
+                <label for="password-confirm" class="col-md-4 col-form-label text-md-right">{!!
+                    trans('messages.ConfirmPassword') !!}</label>
                 <div class="col-md-6">
                     <input id="password-confirm" type="password" class="form-control" name="password_confirmation"
                         required autocomplete="new-password">
                 </div>
             </div>
             <div class="form-group row">
-                <label for="fname" class="col-md-4 col-form-label text-md-right">{!! trans('messages.FirstName') !!}</label>
+                <label for="fname" class="col-md-4 col-form-label text-md-right">{!! trans('messages.FirstName')
+                    !!}</label>
                 <div class="col-md-6">
                     <input id="fname" type="text" class="form-control @error('fname') is-invalid @enderror" name="fname"
                         value="{{ old('fname') }}" required autocomplete="fname" autofocus>
@@ -54,7 +56,8 @@
                 </div>
             </div>
             <div class="form-group row">
-                <label for="lname" class="col-md-4 col-form-label text-md-right">{!! trans('messages.LastName') !!}</label>
+                <label for="lname" class="col-md-4 col-form-label text-md-right">{!! trans('messages.LastName')
+                    !!}</label>
                 <div class="col-md-6">
                     <input id="lname" type="text" class="form-control @error('lname') is-invalid @enderror" name="lname"
                         value="{{ old('lname') }}" required autocomplete="lname" autofocus>
@@ -67,7 +70,8 @@
                 </div>
             </div>
             <div class="form-group row">
-                <label for="address" class="col-md-4 col-form-label text-md-right">{!! trans('messages.Address') !!}</label>
+                <label for="address" class="col-md-4 col-form-label text-md-right">{!! trans('messages.Address')
+                    !!}</label>
                 <div class="col-md-6">
                     <input id="address" type="text" class="form-control @error('address') is-invalid @enderror"
                         name="address" value="{{ old('address') }}" required autocomplete="address" autofocus>
@@ -106,7 +110,8 @@
                 </div>
             </div>
             <div class="form-group row">
-                <label for="zip_code" class="col-md-4 col-form-label text-md-right">{!! trans('messages.ZipCode') !!}</label>
+                <label for="zip_code" class="col-md-4 col-form-label text-md-right">{!! trans('messages.ZipCode')
+                    !!}</label>
                 <div class="col-md-6">
                     <input id="zip_code" type="text" class="form-control @error('zip_code') is-invalid @enderror"
                         name="zip_code" value="{{ old('zip_code') }}" required autocomplete="zip_code" autofocus>
@@ -119,9 +124,10 @@
                 </div>
             </div>
             <div class="form-group row">
-                <label for="country" class="col-md-4 col-form-label text-md-right">{!! trans('messages.Country') !!}</label>
+                <label for="country" class="col-md-4 col-form-label text-md-right">{!! trans('messages.Country')
+                    !!}</label>
                 <div class="col-md-6">
-                    <input type="text" class="form-control" id="id_country" name="country" autocomplete="off">
+                    <input type="hidden" class="form-control" id="id_country" name="country" autocomplete="off">
                     <input id="country" type="text"
                         class="typeahead_country form-control @error('country') is-invalid @enderror"
                         value="{{ old('country') }}" required autocomplete="country" autofocus>
@@ -136,7 +142,7 @@
                 <label for="phone" class="col-md-4 col-form-label text-md-right">{!! trans('messages.Phone') !!}</label>
                 <div class="col-md-6">
                     <input id="phone" type="text" class="form-control @error('phone') is-invalid @enderror" name="phone"
-                        value="{{ old('phone') }}"  autocomplete="phone" autofocus>
+                        value="{{ old('phone') }}" autocomplete="phone" autofocus>
 
                     @error('phone')
                     <span class="invalid-feedback" role="alert">
@@ -159,7 +165,8 @@
                 </div>
             </div>
             <div class="form-group row">
-                <label for="gender" class="col-md-4 col-form-label text-md-right">{!! trans('messages.Gender') !!}</label>
+                <label for="gender" class="col-md-4 col-form-label text-md-right">{!! trans('messages.Gender')
+                    !!}</label>
                 <div class="col-md-6">
                     <select id="gender" type="text" class="form-control @error('gender') is-invalid @enderror"
                         name="gender" value="{{ old('gender') }}" autocomplete="gender" autofocus>
@@ -176,10 +183,11 @@
                 </div>
             </div>
             <div class="form-group row">
-                <label for="newsletter" class="col-md-4 col-form-label text-md-right">{!! trans('messages.Newsletter') !!}</label>
+                <label for="newsletter" class="col-md-4 col-form-label text-md-right">{!! trans('messages.Newsletter')
+                    !!}</label>
                 <div class="col-md-6">
                     <select id="newsletter" type="text" class="form-control @error('newsletter') is-invalid @enderror"
-                        name="newsletter" value="{{ old('newsletter') }}"  autocomplete="newsletter" autofocus>
+                        name="newsletter" value="{{ old('newsletter') }}" autocomplete="newsletter" autofocus>
                         <option value="1">Yes</option>
                         <option value="0">No</option>
                     </select>
@@ -191,7 +199,8 @@
                 </div>
             </div>
             <div class="form-group row">
-                <label for="language" class="col-md-4 col-form-label text-md-right">{!! trans('messages.Lenguage') !!}</label>
+                <label for="language" class="col-md-4 col-form-label text-md-right">{!! trans('messages.Lenguage')
+                    !!}</label>
                 <div class="col-md-6">
                     <select id="language" type="text" class="form-control @error('language') is-invalid @enderror"
                         name="language" value="{{ old('language') }}" required autocomplete="language" autofocus>
@@ -220,5 +229,29 @@
 @endsection
 
 @section('scripts')
+<script>
+var routCountry = "country_typea";
+$(".typeahead_country").typeahead({
+    highlight: true,
+    minLength: 1,
+}, {
+    name: "country",
+    display: "country_name",
+    limit: 35,
+    source: function(query, syncResults, asyncResults) {
+        return $.get(
+            routCountry, {
+                query: query,
+            },
+            function(data) {
+                return asyncResults(data);
+            }
+        );
+    },
+});
+$(".typeahead_country").bind("typeahead:select", function(ev, data) {
+    $("#id_country").val(data.country_id);
+});
+</script>
 
 @endsection
