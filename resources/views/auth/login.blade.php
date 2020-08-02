@@ -65,12 +65,12 @@
             <div class="form-group row">
                 <div class="col-md-6 offset-md-4">
                     <button type="submit" class="btn btn-primary btn-rounded btn-login">
-                        {{ __('Ingresar') }}
+                    {!! trans('messages.send') !!}
                     </button>
 
                     @if (Route::has('password.request'))
                     <a class="btn btn-link" href="{{ route('password.request') }}">
-                        {{ __('Olvidaste tu contraseña?') }}
+                        {!! trans('messages.resetPass') !!}
                     </a>
                     @endif
 
