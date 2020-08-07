@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\SendEmailTemplate;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Mail;
 
 class AdminMailController extends Controller
 {
@@ -43,6 +45,23 @@ class AdminMailController extends Controller
         DB::table('products')->where('product_id', $id)->update(['display' => 0]);
 
         return response()->json(['message' => 'Product disabled: Hide on store']);
+    }
+
+    public function SendMail(Request $request, $id_template)
+    {
+        $template = DB::table('newsletter_templates')
+            ->select('content')
+            ->where('id', $id_template)
+            ->first();
+
+        $msg = $template;
+        $emails = DB::table('users')
+            ->select('email')
+            ->get();
+        foreach ($emails as $ema) {
+            Mail::to($ema->email)->send(new SendEmailTemplate($msg));
+        }
+        return response()->json(['message' => 'Cooreos enviandose'], 200);
     }
 
     //update or create user

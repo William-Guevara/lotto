@@ -7,21 +7,21 @@ use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Contracts\Queue\ShouldQueue;
 
-class TransactionAcceptClient extends Mailable
+class MessageAddTicket extends Mailable
 {
     use Queueable, SerializesModels;
 
-	public $transaction;
+	public $msg;
 	
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct($transactionApplicant)
+
+    public function __construct($msg)
     {
-        $this->transaction = $transactionApplicant;
-        //
+        $this->msg = $msg;
     }
 
     /**
@@ -32,9 +32,6 @@ class TransactionAcceptClient extends Mailable
     public function build()
     {
         return $this
-			->from('notificaciones@trazway.com')
-            ->subject('Trazway - Solicitud aceptada!')
-			->view('mail.transactionAcceptClient')
-			->with(['info' => $this->transaction]);
+			->view('mail.message-add_ticket');
     }
 }

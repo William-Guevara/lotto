@@ -24,7 +24,7 @@
                     </div>
                     <div class="col-md-5 form-group">
                         <label>Drawing Date</label>
-                        <input type="date" id="drawing_date" class="form-control">
+                        <input type="date" id="drawing_date" value="<?php date('Y-m-d'); ?>" class="form-control">
                     </div>
                     <div class="col-md-2 form-group">
                         <label>Seach Tickets</label>

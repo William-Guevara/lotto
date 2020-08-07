@@ -7,22 +7,21 @@ use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Contracts\Queue\ShouldQueue;
 
-class TransactionDenyInterested extends Mailable
+class SendEmailTemplate extends Mailable
 {
     use Queueable, SerializesModels;
 
-	public $transactionApplicant;
-
+	public $msg;
 	
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct($transactionApplicant)
+
+    public function __construct($msg)
     {
-        $this->transactionApplicant = $transactionApplicant;
-        //
+        $this->msg = $msg;
     }
 
     /**
@@ -33,9 +32,6 @@ class TransactionDenyInterested extends Mailable
     public function build()
     {
         return $this
-			->from('notificaciones@trazway.com')
-            ->subject('Trazway - Solicitud rechazada!')
-			->view('mail.TransactionDenyInterested')
-			->with(['info' => $this->transactionApplicant]);
+			->view('mail.email-send');
     }
 }

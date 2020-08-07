@@ -91,6 +91,7 @@ Route::get('adminMailTemplate', 'AdminMailController@ShowTemplates')->name('admi
 Route::post('adminMailTemplate/{id}', 'AdminMailController@SearchInfo'); //Carga la informacion del producto seleccionado
 Route::get('adminMailTemplate/{id}/delete', 'AdminMailController@DeleteadminMailTemplate'); //Eliminar producto
 Route::post('adminMailTemplate/control', 'AdminMailController@ProductControl')->name('adminMailTemplate_control'); //Actualiza o crea un producto
+Route::post('adminMailTemplate/{id}/send', 'AdminMailController@SendMail')->name('SendMail'); //Envio de emails
 
 //Correos electronicos 
 Route::get('edithHome', 'EdithHomeController@ShowTemplates')->name('EdithHome'); //Vista de los templates del email
@@ -112,10 +113,3 @@ Route::get('/logout', function () {
     return redirect('/login');
 })->name('logout');
 
-/*
-|--------------------------------------------------------------------------
-| PAGINAS WEB LOTTO
-|--------------------------------------------------------------------------
-| A continuacion se encuentran todas las rutas de la aplicacion web
-|
- */

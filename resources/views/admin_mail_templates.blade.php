@@ -30,6 +30,10 @@
                     <td>{!! $template->subject !!}</td>
                     <td>
                         <div class="row">
+                        <button data-template="{!! $template->id !!}" data-tooltip="tooltip"
+                                title="Send template" class="btn-success btn_sen_mail">
+                                <i class="bx bx-send"></i>
+                            </button>
                             <button data-template="{!! $template->id !!}" data-option="update" data-tooltip="tooltip"
                                 title="Edit template" data-toggle="modal" data-target="#modalAdminTemplate"
                                 class="btn-primary clear">
@@ -107,6 +111,11 @@
 //Agregado aqui para el control del formulario de registro y que es el mismo que el de actualizar
 function getControl() {
     var url = "{{ route('products_control') }}";
+    return url;
+}
+function getMail(template) {
+    var url = "{{ route('SendMail', ':template' ) }}";
+    url = url.replace(':template', template)
     return url;
 }
 </script>
