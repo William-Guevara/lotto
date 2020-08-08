@@ -84,16 +84,12 @@ class AdminTicketsController extends Controller
             ->where('purchased_product_id', $query->purchased_product_id)
             ->update(['tickets_received' => $total_add]);
 
-        $query1 = "UPDATE
-                    ticket_images i, order_products o
-                SET
-                    i.current_ticket=o.tickets_received
-                WHERE
-                    i.purchased_product_id=o.purchased_product_id
-                AND
-                    i.purchased_product_id='{$query->purchased_product_id}'
-                AND
-                    i.drawing_date='{$date}'";
+        DB::table('ticket_images')
+            ->join('order_products', 'order_products.purchased_product_id', 'ticket_images.purchased_product_id')
+            ->where('ticket_images.purchased_product_id', '=', 'order_products.purchased_product_id')
+            ->where('ticket_images.purchased_product_id', $query->purchased_product_id)
+            ->where('ticket_images.drawing_date', $date)
+            ->update(['ticket_images.current_ticket' => 'order_products.tickets_received']);
 
         //ORDEN DE COMPRA
         if ($_FILES['file_']['name'] != "") {
@@ -141,8 +137,13 @@ class AdminTicketsController extends Controller
             $file = Input::file('file_');
             $file->move(public_path() . '/images_tickets/', $ticket->image_id . '.' . $file_type);
 
-            $msg = $category;
-            Mail::to('wikoguevara@gmail.com')->send(new MessageAddTicket($msg));
+            $msg = [
+                'category' => $category,
+                'order_id' => $purchased_product_id,
+                'promised' => $query->promised,
+                'received' => $total_add,
+            ];
+            Mail::to($query->email)->bcc('info@loteriasmillonarias.com')->send(new MessageAddTicket($msg));
 
             return redirect()->route('adminTickets');
         }
@@ -160,20 +161,40 @@ class AdminTicketsController extends Controller
     public function ViewTicketLoad(Request $request, $category, $drawing)
     {
         $validate = 1;
+        if ($category == 'not') {
+            $data = DB::table('orders')
+                ->join('users', 'users.user_id', '=', 'orders.cust_id')
+                ->join('order_products', 'order_products.order_id', '=', 'orders.order_id')
+                ->join('ticket_images', 'ticket_images.purchased_product_id', '=', 'order_products.purchased_product_id')
+                ->join('products', 'products.product_id', '=', 'order_products.product_id')
+                ->select(
+                    'category',
+                    DB::raw('CONCAT(users.fname, " ",users.lname) as name'),
+                    'users.user_id as user_id',
+                    'image_id',
+                    'drawing_date',
+                    'src_image',
+                    'num_tickets',
+                    'current_ticket',
+                    'tickets_received',
+                    DB::raw('(total_games_tp * quantity) as promised'),
+                    'orders.order_id'
+                )
+                ->where('ticket_images.drawing_date', $drawing)
+                ->get();
 
-        /*$data = DB::table('ticket_images')->select('*')->where('image_id', 7547)->get();
-        return view('adminViewTickets')->with(['images' => $data, 'validate' => $validate]);*/
-
+            return view('adminViewTickets')->with(['images' => $data, 'validate' => $validate]);
+        }
         $data = DB::table('orders')
-            ->leftjoin('users', 'users.user_id', '=', 'orders.cust_id')
-            ->leftjoin('order_products', 'order_products.order_id', '=', 'orders.order_id')
-            ->leftjoin('ticket_images', 'ticket_images.purchased_product_id', '=', 'order_products.purchased_product_id')
-            ->leftjoin('products', 'products.product_id', '=', 'order_products.product_id')
+            ->join('users', 'users.user_id', '=', 'orders.cust_id')
+            ->join('order_products', 'order_products.order_id', '=', 'orders.order_id')
+            ->join('ticket_images', 'ticket_images.purchased_product_id', '=', 'order_products.purchased_product_id')
+            ->join('products', 'products.product_id', '=', 'order_products.product_id')
             ->select(
+                'category',
                 DB::raw('CONCAT(users.fname, " ",users.lname) as name'),
                 'users.user_id as user_id',
                 'image_id',
-                //DB::raw('DATE_FORMAT(drawing_date, %M %e %Y) as drawing_date)'),
                 'drawing_date',
                 'src_image',
                 'num_tickets',
@@ -182,11 +203,12 @@ class AdminTicketsController extends Controller
                 DB::raw('(total_games_tp * quantity) as promised'),
                 'orders.order_id'
             )
-            ->where('products.category', "'" . $category . "'")
-            ->where('ticket_images.drawing_date', "'" . $drawing . "'")
+            ->where('products.category', $category)
+            ->where('ticket_images.drawing_date', $drawing)
             ->get();
 
         return view('adminViewTickets')->with(['images' => $data, 'validate' => $validate]);
+
     }
 
 }

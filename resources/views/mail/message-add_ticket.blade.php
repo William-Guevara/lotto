@@ -1,7 +1,7 @@
 
-<h3>Tiquete Nuevo de {!! $msg !!} </h3>
+<h3>Tiquete Nuevo de {!! $msg['category'] !!} </h3>
 <p> Reciba de nuestra parte un saludo cordial.</p><br />
-<p> De acuerdo al pedido de mensajeria, realizado con Numero de Compra: {$row['order_id']} le informamos que tiene un tiquete de {$category} correspondiente al El Estado de la suscripci�n: Tiquete ".$received." de {$row['promised']} disponible en www.LoteriasMillonarias.com.<br /><br />";
+<p> De acuerdo al pedido de mensajeria, realizado con Numero de Compra: {!! $msg['order_id'] !!} le informamos que tiene un tiquete de {!! $msg['category'] !!} correspondiente al El Estado de la suscripci�n: Tiquete {!! $msg['received'] !!}  de {!! $msg['promised'] !!} disponible en www.LoteriasMillonarias.com.<br /><br />";
 <p> para ver su tiquete visitenos en www.loteriasmillonarias.com y siga los siguientes pasos </p><br /> </p><br />
 <p> 1) Ingresar a 'entre a su cuenta' (al lado de 'Bienvenido a Loterias Millonarias').  </p><br />
 <p> 2) Coloque su cuenta de correo electronico y su contrasena.  </p><br />

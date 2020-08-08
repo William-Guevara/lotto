@@ -2,7 +2,7 @@
 
 @section('content')
 
-<section id="seccion_data" class="seccion_data">
+<section id="seccion_data" class="seccion_data section-bg">
     <div data-aos="fade-up" class="container">
         <div class="section-title">
             <h2>{!! trans('messages.account') !!}</h2>
@@ -203,8 +203,8 @@
     </div>
 </section>
 {{--  --}}
-<section data-aos="fade-up" id="seccion_pass" class="seccion_data section-bg">
-    <div class="container section-bg">
+<section data-aos="fade-up" id="seccion_pass" class="seccion_data">
+    <div class="container">
         <div class="section-title">
             <h2>{!! trans('messages.updatePass') !!}</h2>
         </div>
@@ -245,7 +245,7 @@
     </div>
 </section>
 
-<section data-aos="fade-up" id="seccion_pass" class="seccion_table">
+<section data-aos="fade-up" id="seccion_pass" class="seccion_table section-bg">
     <div data-aos="fade-up" class="container">
         <div class="section-title">
             <h2>{!! trans('messages.purchases') !!}</h2>
@@ -288,6 +288,32 @@
     </div>
 </section>
 
+<section data-aos="fade-up" id="seccion_images">
+    <div data-aos="fade-up" class="container">
+        <div class="section-title">
+            <h2>{!! trans('messages.images') !!}</h2>
+        </div>
+        <div class="row">
+                @foreach($images as $ima)
+                <div class="col-lg-4 col-md-6 d-flex align-items-stretch aos-init aos-animate" data-aos="fade-up">
+                    <article class="member">
+                        <div class="member-img">
+                            <img src="{{ asset($ima->src_image)  }}" alt="{!! $ima->src_image !!}" class="img-fluid">
+                        </div>
+                        <div class="member-info">
+                            <h4>{!! $ima->name !!}</h4>
+                            <span>Date: {!! $ima->drawing_date !!}</span></br>
+                            <span>Number of tickets: {!! $ima->num_tickets !!}</span></br>
+                            <span>Order ID: {!! $ima->order_id !!}</span></br>
+                            <span>Uploaded {!! $ima->current_ticket !!} of {!! $ima->promised !!}</span></br>
+                        </div>
+                    </article><!-- End blog entry -->
+                </div>
+                @endforeach
+            </div>
+
+    </div>
+</section>
 
 @endsection
 

@@ -21,6 +21,7 @@ return [
     'currentPassword' => 'Current Password',
     'resetPass' => '¿ Reset Password ?',
     'send' => 'Send',
+    'images'=> 'Shopping Images',
     //About
     'buyTicket' => 'Comprar Ticketes',
     'buyTicket1' => '1- We buy for you a random Lotto ticket also known as Quick Pick of the selected Lotteries. We will personalize the ticket with your name ensuring your property. You and only you can cash your price.',

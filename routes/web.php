@@ -19,7 +19,6 @@ Route::get('lang/{lang}', 'LanguageController@swap')->name('lang.swap');
 Route::post('logout', 'Auth\LoginController@logout')->name('logout');
 
 //Rutas topbar
-//Rutas topbar
 Route::get('/', function () {
     $user = Auth::user();
 

@@ -13,18 +13,19 @@
                     <div class="col-md-5 form-group">
                         <label>Select Lottery</label>
                         <select class="form-control category">
-                            <option value="0">Select Lotto</option>
+                            <option value="not">Select Lotto</option>
                             <option value="Florida Lotto">Florida Lotto</option>
-                            <option value="New York">New York Lotto</option>
+                            <option value="New York Lotto">New York Lotto</option>
                             <option value="Mega Millions">Mega Millions</option>
                             <option value="Power ball">Power ball</option>
                             <option value="Euro Millones">Euro Millones</option>
+                            <option value="Euro Jackpot">Euro Jackpot</option>
                             <option value="California Lotto">California Lotto</option>
                         </select>
                     </div>
                     <div class="col-md-5 form-group">
                         <label>Drawing Date</label>
-                        <input type="date" id="drawing_date" value="<?php date('Y-m-d'); ?>" class="form-control">
+                        <input type="date" id="drawing_date" class="form-control">
                     </div>
                     <div class="col-md-2 form-group">
                         <label>Seach Tickets</label>
@@ -44,7 +45,7 @@
                         </div>
                         <div class="member-info">
                             <h4>{!! $ima->name !!}</h4>
-                            <span>{!! $ima->drawing_date !!}</span></br>
+                            <span>Date: {!! $ima->drawing_date !!}</span></br>
                             <span>Number of tickets: {!! $ima->num_tickets !!}</span></br>
                             <span>Order ID: {!! $ima->order_id !!}</span></br>
                             <span>Uploaded {!! $ima->current_ticket !!} of {!! $ima->promised !!}</span></br>

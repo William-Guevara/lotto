@@ -8,6 +8,16 @@
     </div>
     <div class="container">
         <table id="table_id" class="display">
+            <colgroup>
+                <col style="width: 12%">
+                <col style="width: 8%">
+                <col style="width: 8%">
+                <col style="width: 8%">
+                <col style="width: 12%">
+                <col style="width: 5%">
+                <col style="width: 42%">
+                <col style="width: 5%">
+            </colgroup>
             <thead>
                 <tr>
                     <th>Name</th>
@@ -17,7 +27,7 @@
                     <th>Categotry</th>
                     <th>Date</th>
                     <th>File</th>
-                    <th>Action</th>
+                    <th></th>
                 </tr>
             </thead>
             <tbody>
@@ -28,9 +38,10 @@
                         <td>{!! $purchas->name !!}</td>
                         <td>{!! $purchas->owed !!}</td>
                         <td>{!! $purchas->total_tickets !!}</td>
-                        <td><input name="num" class="input_quantity" type="num" min="1" value="{!! $purchas->total_tickets !!}"></td>
                         <td>
-                            <input name="category" type="text" value="{!! $purchas->category !!}"></td>
+                            <input name="num" class="form-control input_quantity" type="num" min="1"
+                                value="{!! $purchas->total_tickets !!}"></td>
+                        <td>{!! $purchas->category !!}</td>
                         <td>
                             <input name="date" type="date" class="form-control">
                         </td>
@@ -38,9 +49,11 @@
                             <input name="file_" type="file" class="form-control">
                         </td>
                         <td>
+                            <input type="hidden" name="category" value="{!! $purchas->category !!}">
                             <input type="hidden" name="user_id" value="{!! $purchas->user_id !!}">
-                            <input type="hidden" name="purchased_product_id" value="{!! $purchas->purchased_product_id !!}">
-                            <input class="btn btn-success" type="submit" value="Enviar">
+                            <input type="hidden" name="purchased_product_id"
+                                value="{!! $purchas->purchased_product_id !!}">
+                            <button type="submit" class="btn btn-success btn-sm">Send</button>
                         </td>
                     </form>
                 </tr>
@@ -53,6 +66,6 @@
 @endsection
 
 @section('scripts')
-<script src="{{ asset('js/js_blade/tables.js') }}"></script>
+<script src="{{ asset('js/js_blade/adminTickets.js') }}"></script>
 
 @endsection

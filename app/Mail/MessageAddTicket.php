@@ -32,6 +32,7 @@ class MessageAddTicket extends Mailable
     public function build()
     {
         return $this
+        ->subject('New '.$this->msg['category'].' Ticket')
 			->view('mail.message-add_ticket');
     }
 }

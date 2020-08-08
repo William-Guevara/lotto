@@ -1,13 +1,14 @@
 //add to menssage
-$(function (event) {
+$(function(event) {
     $(".btn_send_option")
         .off()
-        .on("click", function (e) {
+        .on("click", function(e) {
             var _token = $("._token").val();
             var category = $(".category").val();
             var drawing_date = $("#drawing_date").val();
-            if (category == "" || category == 0 || drawing_date == "") {
-                swal("Diligencia todos los campos", {
+            if (drawing_date == "") {
+                //category == "" || category == 0 ||
+                swal("Select drawing date", {
                     icon: "error",
                     buttons: {
                         confirm: {
@@ -18,17 +19,5 @@ $(function (event) {
                 return;
             }
             window.location.href = getLoad(category, drawing_date);
-            /*
-            $.ajax({
-                type: "GET",
-                url: getLoad(category,drawing_date),
-                contentType: "application/json; charset=utf-8",
-                dataType: "json",
-                success: function (response) {},
-                failure: function (response) {},
-                error: function (response) {},
-                timeout: 1000,
-            });
-            */
         });
 });

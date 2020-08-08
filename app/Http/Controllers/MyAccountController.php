@@ -38,33 +38,33 @@ class MyAccountController extends Controller
                 DB::raw('((quantity*total_games_tp) - (tickets_received)) as owed')
 
             )
-            ->where('orders.cust_id', 714) //$user->id)
+            ->where('orders.cust_id', $user->id) //714)
             ->where('orders.response_code', 1)
             ->orderby('completion_timestamp', 'desc')
             ->get();
 
-        return view('my_account')->with(['user' => $user_data, 'purchases' => $purchases]);
+        $images = DB::table('orders')
+            ->join('users', 'users.user_id', '=', 'orders.cust_id')
+            ->join('order_products', 'order_products.order_id', '=', 'orders.order_id')
+            ->join('ticket_images', 'ticket_images.purchased_product_id', '=', 'order_products.purchased_product_id')
+            ->join('products', 'products.product_id', '=', 'order_products.product_id')
+            ->select(
+                'category',
+                DB::raw('CONCAT(users.fname, " ",users.lname) as name'),
+                'users.user_id as user_id',
+                'image_id',
+                'drawing_date',
+                'src_image',
+                'num_tickets',
+                'current_ticket',
+                'tickets_received',
+                DB::raw('(total_games_tp * quantity) as promised'),
+                'orders.order_id'
+            )
+            ->where('user_id', $user->user_id)
+            ->get();
 
-        $md->getData(
-            "orders.order_id as 'order_id',
-            products.name_" . (($lang == "en") ? "en" : "es") . " as 'name_" . (($lang == "en") ? "en" : "es") . "',
-             `quantity`,
-            `tickets_received`,
-            ((quantity*total_games_tp) - (tickets_received)) as 'owed'",
-
-            "orders,
-            order_products,
-            products",
-
-            "orders.response_code='1'
-            AND
-                orders.order_id=order_products.order_id
-            AND
-                order_products.product_id=products.product_id
-            AND
-                orders.cust_id='{$userID}'",
-            "ORDER BY completion_timestamp desc");
-
+        return view('my_account')->with(['user' => $user_data, 'purchases' => $purchases, 'images' => $images]);
     }
 
     public function updatePass(Request $request)

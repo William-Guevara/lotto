@@ -50,7 +50,7 @@ class AdminMailController extends Controller
     public function SendMail(Request $request, $id_template)
     {
         $template = DB::table('newsletter_templates')
-            ->select('content')
+            ->select('content','subject')
             ->where('id', $id_template)
             ->first();
 
