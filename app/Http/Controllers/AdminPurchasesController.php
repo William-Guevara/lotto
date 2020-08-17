@@ -34,27 +34,5 @@ class AdminPurchasesController extends Controller
 
         return view('adminPurchases')->with(['purchases' => $data, 'category' => $category]);
 
-        $data = $md->getData("
-        CONCAT(users.fname,' ',users.lname) as 'name',
-        quantity as 'total_tickets',
-        (quantity*total_games_tp) as 'promised',
-        ((quantity*total_games_tp) - (tickets_received)) as 'owed'",
-            "orders,order_products,products,users",
-            "orders.order_id=order_products.order_id
-            AND
-                order_products.product_id=products.product_id
-            AND
-                orders.cust_id=users.user_id
-            AND
-                (tickets_received<(quantity*total_games_tp))
-            AND
-                orders.response_code=1
-            AND
-                (products.category='{$category}')",
-            "ORDER BY users.fname asc");
-        return $data;
-
-        return view('purchases')->with('purchases', $data);
-
     }
 }

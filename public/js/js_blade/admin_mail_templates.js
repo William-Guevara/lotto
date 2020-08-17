@@ -25,12 +25,7 @@ $(function(event) {
                 confirm: {
                     text: 'Yes, save!',
                     className: 'btn btn-success',
-                    afterSelect: function() {
-                        /* Agregar la navegacion a ordenes cargadas
-                        var pathLabeling = "{{ route('OrdenEtiquetado') }}";
-                        return $.get(pathLabeling);
-                        */
-                    }
+                    afterSelect: function() {}
                 }
             }
         }).then((willCreate) => {

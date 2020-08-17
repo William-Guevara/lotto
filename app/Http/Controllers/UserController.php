@@ -163,4 +163,58 @@ class UserController extends Controller
 
         return response()->json(['message' => 'No se registro ningun cambio'], 400);
     }
+
+    //detail user edit
+    public function UserDetail($id){
+
+        $user = Auth::user();
+
+        $user_data = DB::table('users')
+            ->select('*')
+            ->where('user_id', 361)//$id)
+            ->first()
+        ;
+
+        $purchases = DB::table('orders')
+            ->join('order_products', 'order_products.order_id', '=', 'orders.order_id')
+            ->join('products', 'products.product_id', '=', 'order_products.product_id')
+            ->select(
+                'orders.order_id',
+                'products.name_es',
+                'products.name_en',
+                'quantity',
+                'tickets_received',
+                'completion_timestamp',
+                DB::raw('((quantity*total_games_tp) - (tickets_received)) as owed')
+
+            )
+            ->where('orders.cust_id', 361)//$id) //714)
+            ->where('orders.response_code', 1)
+            ->orderby('completion_timestamp', 'desc')
+            ->get();
+
+        $images = DB::table('orders')
+            ->join('users', 'users.user_id', '=', 'orders.cust_id')
+            ->join('order_products', 'order_products.order_id', '=', 'orders.order_id')
+            ->join('ticket_images', 'ticket_images.purchased_product_id', '=', 'order_products.purchased_product_id')
+            ->join('products', 'products.product_id', '=', 'order_products.product_id')
+            ->select(
+                'category',
+                DB::raw('CONCAT(users.fname, " ",users.lname) as name'),
+                'users.user_id as user_id',
+                'image_id',
+                'drawing_date',
+                'src_image',
+                'num_tickets',
+                'current_ticket',
+                'tickets_received',
+                DB::raw('(total_games_tp * quantity) as promised'),
+                'orders.order_id'
+            )
+            ->where('user_id', 361)//$id)
+            ->get();
+
+        return view('admin_account')->with(['user' => $user_data, 'purchases' => $purchases, 'images' => $images]);
+
+    }
 }

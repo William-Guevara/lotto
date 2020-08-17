@@ -1,15 +1,26 @@
+//Datatable
+$(document).ready(function() {
+    $("#table_id").DataTable({
+        "pageLength": 20,
+        dom: 'Bfrtip',
+        buttons: [
+            'print'
+        ],
+        "order": [0, 'asc']
+    });
+});
 
 //clean inputs
-$(function (event) {
-    $(".clear").click(function () {
+$(function(event) {
+    $(".clear").click(function() {
         $(".campos").val("");
     });
 });
 //data to modal
-$(function (event) {
+$(function(event) {
     $("#modalUserAdmin")
         .off()
-        .on("show.bs.modal", function (e) {
+        .on("show.bs.modal", function(e) {
             var option = $(e.relatedTarget).data("option");
             var user = $(e.relatedTarget).data("user");
             $("#option_select").val(option);
@@ -26,7 +37,7 @@ $(function (event) {
                     contentType: "application/json; charset=utf-8",
                     dataType: "json",
                     async: true,
-                    success: function (response) {
+                    success: function(response) {
                         //cargar funcion click envio de datos agrtegar area
                         $("#user_id").val(response.user_id);
                         $("#Email").val(response.email);
@@ -48,8 +59,8 @@ $(function (event) {
                         $("#Language").val(response.language);
                         $("#Level").val(response.level);
                     },
-                    failure: function (response) {},
-                    error: function (response) {},
+                    failure: function(response) {},
+                    error: function(response) {},
                     timeout: 10000,
                 });
             }
@@ -58,10 +69,10 @@ $(function (event) {
 //Fin cargar area
 
 //add or update user send
-$(function (event) {
+$(function(event) {
     $("#btn_send")
         .off()
-        .on("click", function (e) {
+        .on("click", function(e) {
             let option = $("#option_select").val();
             let user_id = $("#user_id").val();
             let Email = $("#Email").val();
@@ -139,7 +150,7 @@ $(function (event) {
                     Level: Level,
                 }),
                 dataType: "json",
-                success: function (response) {
+                success: function(response) {
                     swal(response.message + "", {
                         icon: "success",
                         buttons: {
@@ -151,7 +162,7 @@ $(function (event) {
                         window.location.href = "users";
                     });
                 },
-                failure: function (response) {
+                failure: function(response) {
                     swal(xhr.responseJSON.message + "", {
                         icon: "error",
                         buttons: {
@@ -161,87 +172,91 @@ $(function (event) {
                         },
                     });
                 },
-                error: function (response) {},
+                error: function(response) {},
                 timeout: 1000,
             });
         });
 });
 
+
+//detail user
+$(function(event) {
+    $(".btn_detail").off().on("click", function(e) {
+        var user = $(this).data("user");
+        window.location.href = getUserAcount(user); //"users/" + user + "/detail";
+    });
+});
 //Delete user
 let user;
-$(function (event) {
-    $(".btn_delete").off().on("click", function (e) {
-            var user = $(this).data("user");
-            swal({
-                title: "¿Delete user?",
-                text: "¡you want to delete!",
-                type: "warning",
-                buttons: {
-                    cancel: {
-                        visible: true,
-                        text: "No!",
-                        className: "btn btn-danger",
-                    },
-                    confirm: {
-                        text: "Yes!",
-                        className: "btn btn-success",
-                        afterSelect: function () {},
-                    },
+$(function(event) {
+    $(".btn_delete").off().on("click", function(e) {
+        var user = $(this).data("user");
+        swal({
+            title: "¿Delete user?",
+            text: "¡you want to delete!",
+            type: "warning",
+            buttons: {
+                cancel: {
+                    visible: true,
+                    text: "No!",
+                    className: "btn btn-danger",
                 },
-            }).then((willCreate) => {
-                if (willCreate) {
-                    $.ajax({
-                        type: "GET",
-                        url: "users/" + user + "/delete",
-                        contentType: "application/json; charset=utf-8",
-                        dataType: "json",
-                    });
-                    swal("removed!", {
-                        icon: "success",
-                        buttons: {
-                            confirm: {
-                                className: "btn btn-success",
-                            },
+                confirm: {
+                    text: "Yes!",
+                    className: "btn btn-success",
+                    afterSelect: function() {},
+                },
+            },
+        }).then((willCreate) => {
+            if (willCreate) {
+                $.ajax({
+                    type: "GET",
+                    url: "users/" + user + "/delete",
+                    contentType: "application/json; charset=utf-8",
+                    dataType: "json",
+                });
+                swal("removed!", {
+                    icon: "success",
+                    buttons: {
+                        confirm: {
+                            className: "btn btn-success",
                         },
-                    }).then((navigate) => {
-                        window.location.href = "users";
-                    });
-                } else {
-                    swal("not removed!", {
-                        buttons: {
-                            confirm: {
-                                className: "btn btn-danger",
-                            },
+                    },
+                }).then((navigate) => {
+                    window.location.href = "users";
+                });
+            } else {
+                swal("not removed!", {
+                    buttons: {
+                        confirm: {
+                            className: "btn btn-danger",
                         },
-                    });
-                }
-            });
+                    },
+                });
+            }
         });
+    });
 });
 
 var routCountry = "country_typea";
-$(".typeahead_country").typeahead(
-    {
-        highlight: true,
-        minLength: 1,
+$(".typeahead_country").typeahead({
+    highlight: true,
+    minLength: 1,
+}, {
+    name: "country",
+    display: "country_name",
+    limit: 20,
+    source: function(query, syncResults, asyncResults) {
+        return $.get(
+            routCountry, {
+                query: query,
+            },
+            function(data) {
+                return asyncResults(data);
+            }
+        );
     },
-    {
-        name: "country",
-        display: "country_name",
-        limit: 20,
-        source: function (query, syncResults, asyncResults) {
-            return $.get(
-                routCountry,
-                {
-                    query: query,
-                },
-                function (data) {
-                    return asyncResults(data);
-                }
-            );
-        },
-    }
-);
-$(".typeahead_country").bind("typeahead:select", function (ev, data) {
+});
+$(".typeahead_country").bind("typeahead:select", function(ev, data) {
     $("#id_country").val(data.country_id);
 });

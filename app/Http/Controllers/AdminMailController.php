@@ -50,15 +50,22 @@ class AdminMailController extends Controller
     public function SendMail(Request $request, $id_template)
     {
         $template = DB::table('newsletter_templates')
-            ->select('content','subject')
+            ->select('content', 'subject')
             ->where('id', $id_template)
             ->first();
 
-        $msg = $template;
-        $emails = DB::table('users')
-            ->select('email')
+        $users = DB::table('users')
+            ->select('*')
             ->get();
-        foreach ($emails as $ema) {
+        /*%user_id%, %email%, %email2%, %fname%, %lname%, %address%,
+        %city%, %state%, %zip_code%, %phone%, %fax%, %gender%, %credits%, %language% */
+        $msg = [
+            'subject' => $template->subject,
+            'template' => $template->content,
+            'usr' => $users,
+        ];
+
+        foreach ($users as $ema) {
             Mail::to($ema->email)->send(new SendEmailTemplate($msg));
         }
         return response()->json(['message' => 'Cooreos enviandose'], 200);

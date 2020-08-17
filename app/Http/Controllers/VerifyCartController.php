@@ -99,7 +99,6 @@ class VerifyCartController extends Controller
 
     public function verifyTransaction(Request $request)
     {
-
         $flg = $request->input('flg');
         //$flg = "su";
 

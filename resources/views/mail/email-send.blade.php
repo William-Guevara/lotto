@@ -1,2 +1,2 @@
 
- {!! $msg->content !!} 
+ {!! $msg['template'] !!} 

@@ -32,6 +32,6 @@ class SendEmailTemplate extends Mailable
     public function build()
     {
         //return $this->view('mail.email-send');
-            return $this->subject($this->msg->subject)->view('mail.email-send');
+            return $this->subject($this->msg['subject'])->view('mail.email-send');
     }
 }

@@ -15,7 +15,10 @@
                 <input type="hidden" class="_token" value="{{ csrf_token() }}">
                 <div class="icon-box">
                     <div class="icon">
-                        <img alt="" src="{{ asset('images/administrative-panel/purchases.png') }}" />
+                        <div class="row">
+                            <i class="bx bxs-plus-circle"></i>
+                            <i class="bx bx-cart"></i>
+                        </div>
                     </div>
                     <h5 class="title">
                         {!! $purchas->name_en !!}
@@ -23,10 +26,13 @@
                     <p>{!! $purchas->description_en !!}</p>
                     <h5 class="title">
                         ${!! $purchas->price !!}
-                        @if((substr($purchas->name_en, -7) == 'Drawing' || (substr($purchas->name_es, -14)) == 'Proximo Sorteo'))
-                        <input type="number" min="5" class="quantity input_quantity {!! $purchas->product_id !!} intLimitTextBox">
+                        @if((substr($purchas->name_en, -7) == 'Drawing' || (substr($purchas->name_es, -14)) == 'Proximo
+                        Sorteo'))
+                        <input type="number" min="5"
+                            class="quantity input_quantity {!! $purchas->product_id !!} intLimitTextBox">
                         @else
-                        <input type="number" min="1" class="quantity input_quantity {!! $purchas->product_id !!} intLimitTextBox">
+                        <input type="number" min="1" placeholder="#"
+                            class="quantity input_quantity {!! $purchas->product_id !!} intLimitTextBox">
                         @endif
                         <button data-product_id="{!! $purchas->product_id !!}"
                             data-description_en="{!! $purchas->description_en !!}"

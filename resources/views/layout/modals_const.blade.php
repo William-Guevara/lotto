@@ -64,179 +64,166 @@
                         <div class="col-lg-4 col-md-6" data-aos="fade-up">
                             <div class="icon-box">
                                 <div class="icon">
-                                    <img alt="" src="{{ asset('images/administrative-panel/users.png') }}" />
+                                    <i class="bx bx-user"></i>
                                 </div>
                                 <h4 class="title"><a href="{{ route('users') }}">Users</a></h4>
-                                <p class="description">Voluptatum deleniti atque corrupti quos dolores et quas
-                                    molestias excepturi sint occaecati cupiditate non provident</p>
+                                <p class="description">This section allows you to view users</p>
                             </div>
                         </div>
                         <div class="col-lg-4 col-md-6" data-aos="fade-up">
                             <div class="icon-box">
                                 <div class="icon">
-                                    <img alt="" src="{{ asset('images/administrative-panel/products.png') }}" />
+                                    <i class="bx bxs-cart"></i>
                                 </div>
                                 <h4 class="title"><a href="{{ route('products') }}">Products</a></h4>
-                                <p class="description">Voluptatum deleniti atque corrupti quos dolores et quas
-                                    molestias excepturi sint occaecati cupiditate non provident</p>
+                                <p class="description">This section allows you to view products</p>
                             </div>
                         </div>
                         <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
                             <div class="icon-box">
                                 <div class="icon">
-                                    <img alt="" src="{{ asset('images/administrative-panel/purchases.png') }}" />
+                                    <i class="bx bxs-cart-alt"></i>
                                 </div>
                                 <h4 class="title"><a href="{{ route('purchases') }}">Purchases</a></h4>
-                                <p class="description">Minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-                                    aliquip ex ea commodo consequat tarad limino ata</p>
+                                <p class="description">This section allows you to view purchases</p>
                             </div>
                         </div>
                         <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
                             <div class="icon-box">
                                 <div class="icon">
-                                    <img alt="" src="{{ asset('images/administrative-panel/lottery_tickets.jpg') }}" />
+                                    <i class="bx bx-fridge"></i>
                                 </div>
                                 <h4 class="title"><a href="{{ route('adminTickets') }}">Add tickets</a></h4>
-                                <p class="description">Duis aute irure dolor in reprehenderit in voluptate velit esse
-                                    cillum dolore eu fugiat nulla pariatur</p>
+                                <p class="description">This section allows you to view add tickets</p>
                             </div>
                         </div>
                         <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="300">
                             <div class="icon-box">
                                 <div class="icon">
-                                    <img alt="" src="{{ asset('images/administrative-panel/lottery_tickets.jpg') }}" />
+                                    <i class="bx bx-fridge"></i>
                                 </div>
                                 <h4 class="title"><a href="{{ route('ViewTickets') }}">View tickets</a></h4>
-                                <p class="description">Excepteur sint occaecat cupidatat non proident, sunt in culpa
-                                    qui officia deserunt mollit anim id est laborum</p>
+                                <p class="description">This section allows you to view tickets</p>
                             </div>
                         </div>
                         <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="400">
                             <div class="icon-box">
                                 <div class="icon">
-                                    <img alt="" src="{{ asset('images/administrative-panel/lottery_balls.jpg') }}" />
+                                    <i class="bx bx-link-external"></i>
                                 </div>
                                 <h4 class="title"><a href="{{ route('results') }}">Lotery Results</a></h4>
-                                <p class="description">At vero eos et accusamus et iusto odio dignissimos ducimus qui
-                                    blanditiis praesentium voluptatum deleniti atque</p>
+                                <p class="description">This section allows you to view lotery results</p>
                             </div>
                         </div>
                         <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="500">
                             <div class="icon-box">
                                 <div class="icon">
-                                    <img alt="" src="{{ asset('images/administrative-panel/Florida-Lotto.jpg') }}" />
+                                    <i class="bx bx-grid"></i>
                                 </div>
                                 <h4 class="title"><a class="lotto_category" style="cursor:pointer"
                                         data-category="Florida Lotto">Tickets Florida Lotto</a></h4>
-                                <p class="description">Et harum quidem rerum facilis est et expedita distinctio. Nam
-                                    libero tempore, cum soluta nobis est eligendi</p>
+                                <p class="description">This section allows you to view Tickets</p>
                             </div>
                         </div>
                         <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="500">
                             <div class="icon-box">
                                 <div class="icon">
-                                    <img alt="" src="{{ asset('images/administrative-panel/New-York-Lotto.jpg') }}" />
+                                    <i class="bx bx-grid"></i>
                                 </div>
                                 <h4 class="title"><a class="lotto_category" style="cursor:pointer"
                                         data-category="New York Lotto">Tickets New York Lotto</a></h4>
-                                <p class="description">Et harum quidem rerum facilis est et expedita distinctio. Nam
-                                    libero tempore, cum soluta nobis est eligendi</p>
+                                <p class="description">This section allows you to view Tickets</p>
                             </div>
                         </div>
                         <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="500">
                             <div class="icon-box">
                                 <div class="icon">
-                                    <img alt="" src="{{ asset('images/administrative-panel/California-Lotto.jpg') }}" />
+                                    <i class="bx bx-grid"></i>
                                 </div>
                                 <h4 class="title"><a class="lotto_category" style="cursor:pointer"
                                         data-category="California Lotto">California Lotto</a></h4>
-                                <p class="description">Et harum quidem rerum facilis est et expedita distinctio. Nam
-                                    libero tempore, cum soluta nobis est eligendi</p>
+                                <p class="description">This section allows you to view Tickets</p>
                             </div>
                         </div>
                         <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="500">
                             <div class="icon-box">
                                 <div class="icon">
-                                    <img alt="" src="{{ asset('images/administrative-panel/Power-Ball.jpg') }}" />
+                                    <i class="bx bx-grid"></i>
                                 </div>
                                 <h4 class="title"><a class="lotto_category" style="cursor:pointer"
                                         data-category="Power Ball">Tickets Power Ball Lotto</a></h4>
-                                <p class="description">Et harum quidem rerum facilis est et expedita distinctio. Nam
-                                    libero tempore, cum soluta nobis est eligendi</p>
+                                <p class="description">This section allows you to view Tickets</p>
                             </div>
                         </div>
                         <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="500">
                             <div class="icon-box">
                                 <div class="icon">
-                                    <img alt="" src="{{ asset('images/administrative-panel/Euro-Millions.jpg') }}" />
+                                    <i class="bx bx-grid"></i>
                                 </div>
                                 <h4 class="title"><a class="lotto_category" style="cursor:pointer"
                                         data-category="Euro Millones">Tickets Euro Millions</a></h4>
-                                <p class="description">Et harum quidem rerum facilis est et expedita distinctio. Nam
-                                    libero tempore, cum soluta nobis est eligendi</p>
+                                <p class="description">This section allows you to view Tickets</p>
                             </div>
                         </div>
                         <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="500">
                             <div class="icon-box">
                                 <div class="icon">
-                                    <img alt="" src="{{ asset('images/administrative-panel/Mega-Millions.jpg') }}" />
+                                    <i class="bx bx-grid"></i>
                                 </div>
                                 <h4 class="title"><a class="lotto_category" style="cursor:pointer"
                                         data-category="Mega Millions">Tickets Mega Millions</a></h4>
-                                <p class="description">Et harum quidem rerum facilis est et expedita distinctio. Nam
-                                    libero tempore, cum soluta nobis est eligendi</p>
+                                <p class="description">This section allows you to view Tickets</p>
                             </div>
                         </div>
                         <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="500">
                             <div class="icon-box">
                                 <div class="icon">
-                                    <img alt="" src="{{ asset('images/administrative-panel/enal.png') }}" />
+                                    <i class="bx bx-grid"></i>
                                 </div>
                                 <h4 class="title"><a class="lotto_category" style="cursor:pointer"
                                         data-category="Super Enalotto">Tickets Super Enaloto</a></h4>
-                                <p class="description">Et harum quidem rerum facilis est et expedita distinctio. Nam
-                                    libero tempore, cum soluta nobis est eligendi</p>
+                                <p class="description">This section allows you to view Tickets</p>
                             </div>
                         </div>
                         <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="500">
                             <div class="icon-box">
                                 <div class="icon">
-                                    <img alt="" src="{{ asset('images/administrative-panel/eurojackpot.jpg') }}" />
+                                    <i class="bx bx-grid"></i>
                                 </div>
                                 <h4 class="title"><a class="lotto_category" style="cursor:pointer"
                                         data-category="Euro Jackpot">Tickets Euro Jackpot</a></h4>
-                                <p class="description">Et harum quidem rerum facilis est et expedita distinctio. Nam
-                                    libero tempore, cum soluta nobis est eligendi</p>
+                                <p class="description">This section allows you to view Tickets</p>
                             </div>
                         </div>
                         <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="500">
                             <div class="icon-box">
                                 <div class="icon">
-                                    <img alt="" src="{{ asset('images/administrative-panel/mail.png') }}" />
+                                    <i class="bx bx-mail-send"></i>
                                 </div>
                                 <h4 class="title"><a href="{{ route('adminMailTemplate') }}">Mail</a></h4>
-                                <p class="description">Et harum quidem rerum facilis est et expedita distinctio. Nam
-                                    libero tempore, cum soluta nobis est eligendi</p>
+                                <p class="description">This section allows you to view mail template</p>
                             </div>
                         </div>
-                        <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="500">
-                            <div class="icon-box">
-                                <div class="icon">
-                                    <img alt="" src="{{ asset('images/administrative-panel/home.png') }}" />
-                                </div>
-                                <h4 class="title"><a href="{{ route('EdithHome') }}">Edith Homepage</a></h4>
-                                <p class="description">Et harum quidem rerum facilis est et expedita distinctio. Nam
-                                    libero tempore, cum soluta nobis est eligendi</p>
-                            </div>
-                        </div>
-
+                        {{--
+<div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="500">
+<div class="icon-box">
+<div class="icon">
+<img alt="" src="{{ asset('images/administrative-panel/home.png') }}" />
                     </div>
-
+                    <h4 class="title"><a href="{{ route('EdithHome') }}">Edith Homepage</a></h4>
+                    <p class="description">Et harum quidem rerum facilis est et expedita distinctio. Nam
+                        libero tempore, cum soluta nobis est eligendi</p>
                 </div>
-            </section><!-- End Services Section -->
-
         </div>
+        --}}
+
     </div>
+
+</div>
+</section><!-- End Services Section -->
+
+</div>
+</div>
 </div>
 {{--Fin Modal Panel --}}
 
