@@ -1,15 +1,15 @@
 //clean inputs
-$(function (event) {
-    $(".clear").click(function () {
+$(function(event) {
+    $(".clear").click(function() {
         $(".campos").val("");
     });
 });
 
 //data to modal
-$(function (event) {
+$(function(event) {
     $("#modalAdminProduct")
         .off()
-        .on("show.bs.modal", function (e) {
+        .on("show.bs.modal", function(e) {
             var option = $(e.relatedTarget).data("option");
             var product = $(e.relatedTarget).data("product");
             $("#option_select").val(option);
@@ -26,7 +26,7 @@ $(function (event) {
                     contentType: "application/json; charset=utf-8",
                     dataType: "json",
                     async: true,
-                    success: function (response) {
+                    success: function(response) {
                         //cargar funcion click envio de datos agrtegar area
                         $("#product_id").val(response.product_id);
                         $("#name_en").val(response.name_en);
@@ -39,8 +39,8 @@ $(function (event) {
                         $("#price").val(response.price);
                         $("#display").val(response.display);
                     },
-                    failure: function (response) {},
-                    error: function (response) {},
+                    failure: function(response) {},
+                    error: function(response) {},
                     timeout: 10000,
                 });
             }
@@ -49,10 +49,10 @@ $(function (event) {
 //Fin cargar area
 
 //add or update product send
-$(function (event) {
+$(function(event) {
     $("#btn_send")
         .off()
-        .on("click", function (e) {
+        .on("click", function(e) {
             let option = $("#option_select").val();
             let product_id = $("#product_id").val();
             let name_en = $("#name_en").val();
@@ -66,15 +66,15 @@ $(function (event) {
             let display = $("#display").val();
             var _token = $("._token").val();
             if (
-                name_en == '' ||
-                description_en == '' ||
-                name_es == '' ||
-                description_es == '' ||
-                duration_months == '' ||
-                total_games == '' ||
-                category == '' ||
-                price == '' ||
-                display == '' 
+                name_en == "" ||
+                description_en == "" ||
+                name_es == "" ||
+                description_es == "" ||
+                duration_months == "" ||
+                total_games == "" ||
+                category == "" ||
+                price == "" ||
+                display == ""
             ) {
                 swal("fields are missing", {
                     icon: "error",
@@ -106,7 +106,7 @@ $(function (event) {
                     display: display,
                 }),
                 dataType: "json",
-                success: function (response) {
+                success: function(response) {
                     swal(response.message + "", {
                         icon: "success",
                         buttons: {
@@ -118,7 +118,7 @@ $(function (event) {
                         window.location.href = "products";
                     });
                 },
-                failure: function (response) {
+                failure: function(response) {
                     swal(xhr.responseJSON.message + "", {
                         icon: "error",
                         buttons: {
@@ -128,18 +128,17 @@ $(function (event) {
                         },
                     });
                 },
-                error: function (response) {},
+                error: function(response) {},
                 timeout: 1000,
             });
         });
 });
 
 //Delete user
-let user;
-$(function (event) {
+$(function(event) {
     $(".btn_delete")
         .off()
-        .on("click", function (e) {
+        .on("click", function(e) {
             var product = $(this).data("product");
             swal({
                 title: "¿Delete product?",
@@ -154,7 +153,7 @@ $(function (event) {
                     confirm: {
                         text: "Yes!",
                         className: "btn btn-success",
-                        afterSelect: function () {},
+                        afterSelect: function() {},
                     },
                 },
             }).then((willCreate) => {
@@ -189,28 +188,24 @@ $(function (event) {
 });
 
 var routCountry = "country_typea";
-$(".typeahead_country").typeahead(
-    {
-        highlight: true,
-        minLength: 1,
+$(".typeahead_country").typeahead({
+    highlight: true,
+    minLength: 1,
+}, {
+    name: "country",
+    display: "country_name",
+    limit: 20,
+    source: function(query, syncResults, asyncResults) {
+        return $.get(
+            routCountry, {
+                query: query,
+            },
+            function(data) {
+                return asyncResults(data);
+            }
+        );
     },
-    {
-        name: "country",
-        display: "country_name",
-        limit: 20,
-        source: function (query, syncResults, asyncResults) {
-            return $.get(
-                routCountry,
-                {
-                    query: query,
-                },
-                function (data) {
-                    return asyncResults(data);
-                }
-            );
-        },
-    }
-);
-$(".typeahead_country").bind("typeahead:select", function (ev, data) {
+});
+$(".typeahead_country").bind("typeahead:select", function(ev, data) {
     $("#id_country").val(data.country_id);
 });

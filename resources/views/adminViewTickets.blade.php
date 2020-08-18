@@ -62,8 +62,8 @@
 @endsection
 
 @section('scripts')
-<script src="{{ asset('js/js_blade/tables.js') }}"></script>
 <script src="{{ asset('js/js_blade/adminViewTickets.js') }}"></script>
+<script src="{{ asset('js/js_blade/tables.js') }}"></script>
 
 <script>
 function getLoad(category, drawing_date) {

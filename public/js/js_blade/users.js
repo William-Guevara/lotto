@@ -1,15 +1,3 @@
-//Datatable
-$(document).ready(function() {
-    $("#table_id").DataTable({
-        "pageLength": 20,
-        dom: 'Bfrtip',
-        buttons: [
-            'print'
-        ],
-        "order": [0, 'asc']
-    });
-});
-
 //clean inputs
 $(function(event) {
     $(".clear").click(function() {
@@ -178,64 +166,66 @@ $(function(event) {
         });
 });
 
-
 //detail user
 $(function(event) {
-    $(".btn_detail").off().on("click", function(e) {
-        var user = $(this).data("user");
-        window.location.href = getUserAcount(user); //"users/" + user + "/detail";
-    });
+    $(".btn_detail")
+        .off()
+        .on("click", function(e) {
+            var user = $(this).data("user");
+            window.location.href = getUserAcount(user);
+        });
 });
 //Delete user
-let user;
 $(function(event) {
-    $(".btn_delete").off().on("click", function(e) {
-        var user = $(this).data("user");
-        swal({
-            title: "¿Delete user?",
-            text: "¡you want to delete!",
-            type: "warning",
-            buttons: {
-                cancel: {
-                    visible: true,
-                    text: "No!",
-                    className: "btn btn-danger",
-                },
-                confirm: {
-                    text: "Yes!",
-                    className: "btn btn-success",
-                    afterSelect: function() {},
-                },
-            },
-        }).then((willCreate) => {
-            if (willCreate) {
-                $.ajax({
-                    type: "GET",
-                    url: "users/" + user + "/delete",
-                    contentType: "application/json; charset=utf-8",
-                    dataType: "json",
-                });
-                swal("removed!", {
-                    icon: "success",
-                    buttons: {
-                        confirm: {
-                            className: "btn btn-success",
-                        },
+    $(".btn_delete")
+        .off()
+        .on("click", function(e) {
+            var user = $(this).data("user");
+            swal({
+                title: "¿Delete user?",
+                text: "¡you want to delete!",
+                type: "warning",
+                buttons: {
+                    cancel: {
+                        visible: true,
+                        text: "No!",
+                        className: "btn btn-danger",
                     },
-                }).then((navigate) => {
-                    window.location.href = "users";
-                });
-            } else {
-                swal("not removed!", {
-                    buttons: {
-                        confirm: {
-                            className: "btn btn-danger",
-                        },
+                    confirm: {
+                        text: "Yes!",
+                        className: "btn btn-success",
+                        afterSelect: function() {},
                     },
-                });
-            }
+                },
+            }).then((willCreate) => {
+                if (willCreate) {
+                    $.ajax({
+                        type: "GET",
+                        url: "users/" + user + "/delete",
+                        contentType: "application/json; charset=utf-8",
+                        dataType: "json",
+                    });
+                    swal("removed!", {
+                        icon: "success",
+                        buttons: {
+                            confirm: {
+                                className: "btn btn-success",
+                            },
+                        },
+                    }).then((navigate) => {
+                        window.location.href = "users";
+                    });
+                } else {
+                    swal("not removed!", {
+                        buttons: {
+                            confirm: {
+                                className: "btn btn-danger",
+                            },
+                        },
+                    });
+                }
+            });
         });
-    });
 });
 
 var routCountry = "country_typea";

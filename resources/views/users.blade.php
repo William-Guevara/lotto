@@ -30,11 +30,6 @@
                     <td>{!! $user->email !!}</td>
                     <td>
                         <div class="row">
-                            <button data-user="{!! $user->user_id !!}" data-option="update" data-tooltip="tooltip"
-                                title="Edit user" data-toggle="modal" data-target="#modalUserAdmin"
-                                class="btn-primary clear">
-                                <i class="bx bx-edit"></i>
-                            </button>
                             <button data-user="{!! $user->user_id !!}" class="btn-danger btn_delete">
                                 <i class="bx bx-minus"></i>
                             </button>
@@ -54,19 +49,20 @@
 
 @section('scripts')
 <script src="{{ asset('js/js_blade/users.js') }}"></script>
+<script src="{{ asset('js/js_blade/tables.js') }}"></script>
 
 <script>
-//Agregado aqui para el control del formulario de registro y que es el mismo que el de actualizar
-function getControl() {
-    var url = "{{ route('user_control') }}";
-    return url;
-}
+    //Agregado aqui para el control del formulario de registro y que es el mismo que el de actualizar
+    function getControl() {
+        var url = "{{ route('user_control') }}";
+        return url;
+    }
 
-function getUserAcount(id) {
-    var url = "{{ route('userDetail', ':id' ) }}";
-    url = url.replace(':id',id)
-    return url;
-}
+    function getUserAcount(id) {
+        var url = "{{ route('userDetail', ':id' ) }}";
+        url = url.replace(':id',id)
+        return url;
+    }
 </script>
 
 

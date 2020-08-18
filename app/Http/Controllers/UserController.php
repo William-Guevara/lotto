@@ -172,7 +172,7 @@ class UserController extends Controller
 
         $user_data = DB::table('users')
             ->select('*')
-            ->where('user_id', 361) //$id)
+            ->where('user_id', $id)
             ->first()
         ;
 
@@ -189,7 +189,7 @@ class UserController extends Controller
                 DB::raw('((quantity*total_games_tp) - (tickets_received)) as owed')
 
             )
-            ->where('orders.cust_id', 361) //$id) //714)
+            ->where('orders.cust_id', $id) //714)
             ->where('orders.response_code', 1)
             ->orderby('completion_timestamp', 'desc')
             ->get();
@@ -212,8 +212,9 @@ class UserController extends Controller
                 DB::raw('(total_games_tp * quantity) as promised'),
                 'orders.order_id'
             )
-            ->where('user_id', 361) //$id)
+            ->where('user_id', $id)
             ->where('orders.response_code', 1)
+            ->orderBy('drawing_date', 'desc')
             ->get();
 
         return view('admin_account')->with(['user' => $user_data, 'purchases' => $purchases, 'images' => $images]);
@@ -244,7 +245,6 @@ class UserController extends Controller
     {
         $order_id = $request->input('order_id');
         $quantity = $request->input('quantity');
-        //$format = $request->input('format');
 
         $orders = DB::table('order_products')
             ->select('purchased_product_id', 'total_games_tp')
