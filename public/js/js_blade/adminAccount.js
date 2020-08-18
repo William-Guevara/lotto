@@ -8,7 +8,6 @@ $(document).ready(function() {
         ],
         "order": [5, 'desc']
     });
-
 });
 
 //clean inputs
@@ -181,17 +180,78 @@ $(function(event) {
         });
 });
 
+//Add tickets
+$(function(event) {
+    $("#btn_send_tickets")
+        .off()
+        .on("click", function(e) {
+            let order_id = $("#order_id").val();
+            let quantity = $("#quantity").val();
+            let _token = $("._token").val();
+            if (quantity == '') {
+                swal("Select to quntity", {
+                    icon: "error",
+                    buttons: {
+                        confirm: {
+                            className: "btn btn-danger",
+                        },
+                    },
+                });
+                return;
+            }
+
+            $.ajax({
+                type: "POST",
+                url: getAddTickets(),
+                contentType: "application/json; charset=utf-8",
+                data: JSON.stringify({
+                    _token: _token,
+                    order_id: order_id,
+                    quantity: quantity
+                }),
+                dataType: "json",
+                success: function(response) {
+
+                    TableProducts.ajax.url(getModalProducts(order_id)).load(function() {});
+
+                    swal(response.message + "", {
+                        icon: "success",
+                        buttons: {
+                            confirm: {
+                                className: "btn btn-success",
+                            },
+                        },
+                    }).then((navigate) => {
+                        window.location.href = location;
+                    });
+                },
+                failure: function(response) {
+                    swal(xhr.responseJSON.message + "", {
+                        icon: "error",
+                        buttons: {
+                            confirm: {
+                                className: "btn btn-danger",
+                            },
+                        },
+                    });
+                },
+                error: function(response) {},
+                timeout: 10000,
+            });
+        });
+});
 
 //cargar tomar data para tabla
 $(document).ready(function() {
     $(function(event) {
         $('#AdminTickets').on('show.bs.modal', function(e) {
-            var device = $(e.relatedTarget).data('device');
-            TableProducts.ajax.url(getModelProducts(device)).load(function() {});
+            var order_id = $(e.relatedTarget).data('order_id');
+            $("#order_id").val(order_id);
+            TableProducts.ajax.url(getModalProducts(order_id)).load(function() {});
         });
     });
 });
-var device = 0;
+var order_id = 0;
 $(document).ready(function(e) {
     TableProducts = $('#table_products').DataTable({
         "pageLength": 10,
@@ -212,7 +272,7 @@ $(document).ready(function(e) {
         },
         "ajax": {
             type: "GET",
-            url: getModelProducts(device),
+            url: getModalProducts(order_id),
             dataSrc: '',
             contentType: "application/json; charset=utf-8",
             dataType: "json"
@@ -222,19 +282,14 @@ $(document).ready(function(e) {
             }, {
                 data: "quantity"
             }, {
-                data: "ticket_sold"
+                data: "promised"
             },
             {
-                data: "delivered"
+                data: "tickets_received"
+            },
+            {
+                data: "completion_timestamp"
             }
         ],
-        /*,
-        "columnDefs": [{
-            "targets": [2],
-            "render": function(data, type, row) {
-                return '<td><button data-id_file="' + row.id + '" class="btn btn-icon btn-round btn-success download_file"><i class="fas fa-download"></i></button></td>';
-            }
-        }]
-        */
     });
 });

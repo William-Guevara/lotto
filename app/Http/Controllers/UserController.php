@@ -165,13 +165,14 @@ class UserController extends Controller
     }
 
     //detail user edit
-    public function UserDetail($id){
+    public function UserDetail($id)
+    {
 
         $user = Auth::user();
 
         $user_data = DB::table('users')
             ->select('*')
-            ->where('user_id', 361)//$id)
+            ->where('user_id', 361) //$id)
             ->first()
         ;
 
@@ -188,7 +189,7 @@ class UserController extends Controller
                 DB::raw('((quantity*total_games_tp) - (tickets_received)) as owed')
 
             )
-            ->where('orders.cust_id', 361)//$id) //714)
+            ->where('orders.cust_id', 361) //$id) //714)
             ->where('orders.response_code', 1)
             ->orderby('completion_timestamp', 'desc')
             ->get();
@@ -211,10 +212,56 @@ class UserController extends Controller
                 DB::raw('(total_games_tp * quantity) as promised'),
                 'orders.order_id'
             )
-            ->where('user_id', 361)//$id)
+            ->where('user_id', 361) //$id)
+            ->where('orders.response_code', 1)
             ->get();
 
         return view('admin_account')->with(['user' => $user_data, 'purchases' => $purchases, 'images' => $images]);
+
+    }
+
+    //Detalle de productos para un usuario seleccionado desde un usuario administrador
+    public function DetailProducts($id)
+    {
+        $orders = DB::table('orders')
+            ->join('order_products', 'order_products.order_id', '=', 'orders.order_id')
+            ->join('products', 'products.product_id', '=', 'order_products.product_id')
+            ->select(
+                'products.name_en as product_name',
+                'quantity',
+                DB::raw('(quantity*total_games_tp) as promised'),
+                'tickets_received',
+                'completion_timestamp',
+            )
+            ->where('orders.response_code', 1)
+            ->where('orders.order_id', $id)
+            ->get();
+    
+        return $orders;
+    }
+
+    public function AddTickets(Request $request)
+    {
+        $order_id = $request->input('order_id');
+        $quantity = $request->input('quantity');
+        //$format = $request->input('format');
+
+        $orders = DB::table('order_products')
+            ->select('purchased_product_id', 'total_games_tp')
+            ->where('order_id', $order_id)
+            ->get();
+
+        foreach ($orders as $order) {
+
+            $total = $order->total_games_tp;
+            $total = $total + $quantity;
+            $order_ = $order->purchased_product_id;
+
+            DB::table('order_products')
+                ->where('purchased_product_id', $order_)
+                ->update(['total_games_tp' => $total]);
+        }
+        return response()->json(['message' => 'Updated']);
 
     }
 }

@@ -51,6 +51,9 @@ Route::get('users/{id}', 'UserController@SearchInfo'); //Carga la informacion de
 Route::get('users/{id}/delete', 'UserController@DeleteUser'); //Eliminar usuario
 Route::post('users/control', 'UserController@UserControl')->name('user_control'); //Actualiza o crea un usuario
 Route::get('users/{id}/detail', 'UserController@UserDetail')->name('userDetail'); //Detalle de un usuario desde el panel de administración
+Route::get('users/{id}/products', 'UserController@DetailProducts')->name('DetailProducts'); //Modal de productos de orden seleccionada 
+Route::post('users/products/AddTickets', 'UserController@AddTickets')->name('AddTickets'); //Send 
+
 //Usuario cliente 
 Route::get('myAccount', 'MyAccountController@ShowDetail')->name('myAccount'); //Vista del perfil
 Route::get('myAccount/update/password', 'MyAccountController@updatePass')->name('updatePass');

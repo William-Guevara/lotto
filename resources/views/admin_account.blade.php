@@ -5,7 +5,7 @@
 <section id="seccion_data" class="seccion_data section-bg">
     <div data-aos="fade-up" class="container">
         <div class="section-title">
-            <h2>{!! trans('messages.account') !!}</h2>
+            <h2>Acount User</h2>
         </div>
         <form method="POST" action="{{ route('user_control') }}">
             <input type="hidden" name="option" value="update_client">
@@ -273,7 +273,7 @@
                     <td>{!! $result->completion_timestamp !!}</td>
                     <td>
                         <div class="row">
-                            <button data-result="{!! $result->order_id !!}" data-toggle="modal"
+                            <button data-order_id="{!! $result->order_id !!}" data-toggle="modal"
                                 data-target="#AdminTickets" class="btn-info">
                                 <i class="bx bx-list-plus"></i>
                             </button>
@@ -286,7 +286,7 @@
     </div>
 </section>
 
-{{--Fin Modal Admin Tickets --}}
+{{-- Modal Admin Tickets --}}
 <div class="modal fade" id="AdminTickets" aria-hidden="true" aria-labelledby="modal-title" role="dialog" tabindex="-2">
     <div class="modal-dialog modal-lg modal-center">
         <div class="modal-content">
@@ -294,44 +294,49 @@
                 <div class="container">
                     <div class="section-title">
                         <h2 data-aos="fade-up">Products in Order</h2>
-                        <input type="hidden" class="campos" id="option_select">
-                        <input type="hidden" class="campos" id="id">
+                        <input type="hidden" class="campos" id="order_id">
                         <input type="hidden" class="_token" value="{{ csrf_token() }}">
                     </div>
                     <div class="row justify-content-center" data-aos="fade-up" data-aos-delay="300">
                         <div class="col-xl-9 col-lg-12 mt-4">
                             <div class="form-row">
-                                <div class="col-md-5 form-group">
-                                    <label>Name</label>
-                                    <input type="text" class="form-control campos" id="name" placeholder="Name" />
+                                <div class="col-md-6 form-group">
+                                    <input type="text" class="form-control campos" id="quantity"
+                                        placeholder="Quantity" />
                                 </div>
-                                <div class="col-md-5 form-group">
-                                    <label>Subject</label>
-                                    <input type="text" class="form-control campos" id="subject" placeholder="Subject" />
-                                </div>
-                            </div>
-                            <div class="col-md-2 form-group">
-                                <div class="text-center">
+                                <div class="col-md-6 form-group">
                                     <button class="btn btn-success" id="btn_send_tickets" type="button">Send</button>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <table id="table_products" class="display">
-                        <thead>
-                            <tr>
-                                <th>Product Name</th>
-                                <th>Quantity</th>
-                                <th>Ticket Sold</th>
-                                <th>Delivered</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                           
-                        </tbody>
-                    </table>
+                    <div id="table" style="width: 100%" class="table-responsive">
+
+                        <table id="table_products" style="width: 100%" class="display table table-striped table-hover">
+                            <colgroup>
+                                <col style="width: 50">
+                                <col style="width: 10%">
+                                <col style="width: 10%">
+                                <col style="width: 10%">
+                                <col style="width: 20%">
+                            </colgroup>
+                            <thead>
+                                <tr>
+                                    <th>Product Name</th>
+                                    <th>Quantity</th>
+                                    <th>Ticket Sold</th>
+                                    <th>Delivered</th>
+                                    <th>Date</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </section>
+
         </div>
     </div>
 </div>
@@ -373,6 +378,17 @@
 //Agregado aqui para el control del formulario de registro y que es el mismo que el de actualizar
 function getControl() {
     var url = "{{ route('results_control') }}";
+    return url;
+}
+
+function getModalProducts(id) {
+    var url = "{{ route('DetailProducts', ':id') }}";
+    url = url.replace(':id', id)
+    return url;
+}
+
+function getAddTickets() {
+    var url = "{{ route('AddTickets') }}";
     return url;
 }
 </script>
