@@ -190,7 +190,7 @@ $(function(event) {
 var routCountry = "country_typea";
 $(".typeahead_country").typeahead({
     highlight: true,
-    minLength: 1,
+    minLength: 0,
 }, {
     name: "country",
     display: "country_name",

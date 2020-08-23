@@ -30,8 +30,7 @@ class UserController extends Controller
     {
         $users = DB::table('users')
             ->join('countries', 'countries.country_id', '=', 'users.country')
-            ->select('*', 'countries.country_name'
-            )
+            ->select('*', 'countries.country_name')
             ->where('user_id', $id)
             ->first();
 
@@ -94,7 +93,7 @@ class UserController extends Controller
                     'newsletter' => $Newsletter,
                     'language' => $Language,
                     'level' => 1,
-                    'active' => 1,
+                    'active' => 1
                 ]);
             return response()->json(['message' => 'Created']);
         }
@@ -119,7 +118,7 @@ class UserController extends Controller
                     'newsletter' => $Newsletter,
                     'language' => $Language,
                     'level' => $Level,
-                    'active' => 1,
+                    'active' => 1
                 ]);
             return response()->json(['message' => 'Updated']);
         }
@@ -156,7 +155,7 @@ class UserController extends Controller
                     'fax' => $Fax,
                     'gender' => $Gender,
                     'newsletter' => $Newsletter,
-                    'language' => $Language,
+                    'language' => $Language
                 ]);
             return redirect()->route('myAccount');
         }
@@ -232,7 +231,7 @@ class UserController extends Controller
                 'quantity',
                 DB::raw('(quantity*total_games_tp) as promised'),
                 'tickets_received',
-                'completion_timestamp',
+                'completion_timestamp'
             )
             ->where('orders.response_code', 1)
             ->where('orders.order_id', $id)

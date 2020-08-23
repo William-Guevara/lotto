@@ -6,13 +6,11 @@
         <h2 data-aos="fade-up">Register</h2>
     </div>
     <div class="container">
-        <form method="POST" action="{{ route('register') }}">
+        <form id="form_send" method="POST" action="{{ route('register') }}">
             <div class="form-group row">
                 @csrf
-
                 <div class="form-group col-md-6 row">
-                    <label for="email" class="col-md-4 col-form-label text-md-right">{!! trans('messages.Email')
-                        !!}</label>
+                    <label for="email" class="col-md-4 col-form-label text-md-right">{!! trans('messages.Email') !!}</label>
                     <div class="col-md-6">
                         <input id="email" type="email" class="form-control @error('email') is-invalid @enderror"
                             name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
@@ -132,10 +130,10 @@
                     <label for="country" class="col-md-4 col-form-label text-md-right">{!! trans('messages.Country')
                         !!}</label>
                     <div class="col-md-6">
-                        <input type="hidden" class="form-control" id="id_country" name="country" autocomplete="off">
+                        <input type="hidden" class="form-control @error('country') is-invalid @enderror"
+                            value="{{ old('country') }}" required id="id_country" name="country">
                         <input id="country" type="text"
-                            class="typeahead_country form-control @error('country') is-invalid @enderror"
-                            value="{{ old('country') }}" required autocomplete="country" autofocus>
+                            class="typeahead_country form-control" required autocomplete="country" autofocus>
                         @error('country')
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>
@@ -241,7 +239,7 @@
 var routCountry = "country_typea";
 $(".typeahead_country").typeahead({
     highlight: true,
-    minLength: 1,
+    minLength: 0,
 }, {
     name: "country",
     display: "country_name",
@@ -259,6 +257,17 @@ $(".typeahead_country").typeahead({
 });
 $(".typeahead_country").bind("typeahead:select", function(ev, data) {
     $("#id_country").val(data.country_id);
+});
+
+$("#form_send").validate({
+        ignore: "not:hidden",
+        rules: {
+            something: {
+                number:true,
+                min:1,
+                required:true
+            }
+        }
 });
 </script>
 
