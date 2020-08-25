@@ -54,6 +54,7 @@ Route::get('users/{id}/detail', 'UserController@UserDetail')->name('userDetail')
 Route::get('users/{id}/products', 'UserController@DetailProducts')->name('DetailProducts'); //Modal de productos de orden seleccionada 
 Route::post('users/products/AddTickets', 'UserController@AddTickets')->name('AddTickets'); //Send 
 
+
 //Usuario cliente 
 Route::get('myAccount', 'MyAccountController@ShowDetail')->name('myAccount'); //Vista del perfil
 Route::get('myAccount/update/password', 'MyAccountController@updatePass')->name('updatePass');

@@ -45,33 +45,34 @@ class UserController extends Controller
         return response()->json(['message' => 'User delete']);
     }
 
-    //update or create user
+    //update or create user from myAcount 
     public function UserControl(Request $request)
     {
         //Actualizar el registro del producto
         $option_select = $request->input('option');
         $user_id = $request->input('user_id');
 
-        $Email = $request->input('Email');
-        $Email2 = $request->input('Email2');
-        $Password = $request->input('Password');
-        $FirstName = $request->input('FirstName');
-        $LastName = $request->input('LastName');
-        $Address = $request->input('Address');
-        $City = $request->input('City');
-        $State = $request->input('State');
-        $ZipCode = $request->input('ZipCode');
+        
+        $Email = $request->input('email');
+        $Email2 = $request->input('email2');
+        $Password = $request->input('password');
+        $FirstName = $request->input('fname');
+        $LastName = $request->input('lname');
+        $Address = $request->input('address');
+        $City = $request->input('city');
+        $State = $request->input('state');
+        $ZipCode = $request->input('zip_code');
         if ($ZipCode == "") {
             $ZipCode = 0000;
         }
-        $Country = $request->input('Country');
-        $Phone = $request->input('Phone');
-        $Fax = $request->input('Fax');
-        $Gender = $request->input('Gender');
-        $Credits = $request->input('Credits');
-        $Newsletter = $request->input('Newsletter');
-        $Language = $request->input('Language');
-        $Level = $request->input('Level');
+        $Country = $request->input('country');
+        $Phone = $request->input('phone');
+        $Fax = $request->input('fax');
+        $Gender = $request->input('gender');
+        $Credits = $request->input('credits');
+        $Newsletter = $request->input('newsletter');
+        $Language = $request->input('language');
+        $Level = $request->input('level');
 
         if ($option_select == 'create') {
             DB::table('users')
@@ -92,18 +93,16 @@ class UserController extends Controller
                     'credits' => $Credits,
                     'newsletter' => $Newsletter,
                     'language' => $Language,
-                    'level' => 1,
+                    'level' => $Level,
                     'active' => 1
                 ]);
             return response()->json(['message' => 'Created']);
-        }
-        if ($option_select == 'update') {
+        }else if ($option_select == 'update_admin') {
             DB::table('users')
                 ->where('user_id', $user_id)
                 ->update([
                     'email' => $Email,
                     'email2' => $Email2,
-                    'password' => $Password,
                     'fname' => $FirstName,
                     'lname' => $LastName,
                     'address' => $Address,
@@ -120,26 +119,10 @@ class UserController extends Controller
                     'level' => $Level,
                     'active' => 1
                 ]);
-            return response()->json(['message' => 'Updated']);
-        }
-        if ($option_select == 'update_client') {
+            return redirect()->back();
+        }else if ($option_select == 'update_client') {
             $user = Auth::user();
-            $Email = $request->input('email');
-            $Email2 = $request->input('email2');
-            $FirstName = $request->input('fname');
-            $LastName = $request->input('lname');
-            $Address = $request->input('address');
-            $City = $request->input('city');
-            $State = $request->input('state');
-            $ZipCode = $request->input('zip_code');
-            if ($ZipCode == "") {
-                $ZipCode = 0000;
-            }
-            $Phone = $request->input('phone');
-            $Fax = $request->input('fax');
-            $Gender = $request->input('gender');
-            $Newsletter = $request->input('newsletter');
-            $Language = $request->input('language');
+            
             DB::table('users')
                 ->where('user_id', $user->user_id)
                 ->update([
@@ -155,7 +138,7 @@ class UserController extends Controller
                     'fax' => $Fax,
                     'gender' => $Gender,
                     'newsletter' => $Newsletter,
-                    'language' => $Language
+                    'language' => $Language,
                 ]);
             return redirect()->route('myAccount');
         }
@@ -172,8 +155,7 @@ class UserController extends Controller
         $user_data = DB::table('users')
             ->select('*')
             ->where('user_id', $id)
-            ->first()
-        ;
+            ->first();
 
         $purchases = DB::table('orders')
             ->join('order_products', 'order_products.order_id', '=', 'orders.order_id')

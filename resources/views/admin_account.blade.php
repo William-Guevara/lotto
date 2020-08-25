@@ -2,13 +2,14 @@
 
 @section('content')
 
-<section id="seccion_data" class="seccion_data section-bg">
+<section id="seccion_data" class="seccion_data">
     <div data-aos="fade-up" class="container">
         <div class="section-title">
             <h2>Acount User</h2>
         </div>
         <form method="POST" action="{{ route('user_control') }}">
-            <input type="hidden" name="option" value="update_client">
+            <input type="hidden" name="option" value="update_admin">
+            <input type="hidden" name="user_id" value="{!! $user->user_id !!}">
             <div class="form-group row">
                 @csrf
                 <div class="form-group col-md-6 row">
@@ -156,6 +157,18 @@
                     </div>
                 </div>
                 <div class="form-group col-md-6 row">
+                    <label for="credits" class="col-md-4 col-form-label text-md-right">Credits</label>
+                    <div class="col-md-6">
+                        <input type="number" min="0"  step="0.01" id="credits" type="text" class="form-control @error('credits') is-invalid @enderror"
+                            name="credits" value="{!! $user->credits !!}" required autocomplete="credits" autofocus>
+                        @error('credits')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                        @enderror
+                    </div>
+                </div>
+                <div class="form-group col-md-6 row">
                     <label for="newsletter" class="col-md-4 col-form-label text-md-right">{!!
                         trans('messages.Newsletter')
                         !!}</label>
@@ -190,6 +203,21 @@
                         @enderror
                     </div>
                 </div>
+                <div class="form-group col-md-6 row">
+                    <label for="level" class="col-md-4 col-form-label text-md-right">Level</label>
+                    <div class="col-md-6">
+                        <select id="level" type="text" class="form-control @error('level') is-invalid @enderror"
+                            name="level" value="{!! $user->level !!}" required autocomplete="level" autofocus>
+                            <option value="1">Normal</option>
+                            <option value="10">Admin</option>
+                        </select>
+                        @error('level')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                        @enderror
+                    </div>
+                </div>
 
                 <div class="form-group col-md-6  row">
                     <div class="col-md-6 offset-md-4">
@@ -197,48 +225,6 @@
                             {!! trans('messages.update') !!}
                         </button>
                     </div>
-                </div>
-            </div>
-        </form>
-    </div>
-</section>
-{{--  --}}
-<section data-aos="fade-up" id="seccion_pass" class="seccion_data">
-    <div class="container">
-        <div class="section-title">
-            <h2>{!! trans('messages.updatePass') !!}</h2>
-        </div>
-        <form method="GET" action="{{ route('updatePass') }}">
-            <div class="form-group row">
-
-                <div class="form-group col-md-6 row">
-                    <label for="password" class="col-md-4 col-form-label text-md-right">{!! trans('messages.Password')
-                        !!}</label>
-                    <div class="col-md-6">
-                        <input id="password" type="password"
-                            class="form-control @error('password') is-invalid @enderror" name="password" required
-                            autocomplete="new-password">
-                        @error('password')
-                        <span class="invalid-feedback" role="alert">
-                            <strong>{{ $message }}</strong>
-                        </span>
-                        @enderror
-                    </div>
-                </div>
-                <div class="form-group col-md-6 row">
-                    <label for="password-confirm" class="col-md-4 col-form-label text-md-right">{!!
-                        trans('messages.ConfirmPassword') !!}</label>
-                    <div class="col-md-6">
-                        <input id="password-confirm" type="password" class="form-control" name="password_confirmation"
-                            required autocomplete="new-password">
-                    </div>
-                </div>
-            </div>
-            <div class="form-group col-md-6  row">
-                <div class="col-md-6 offset-md-4">
-                    <button type="submit" class="btn btn-primary">
-                        {!! trans('messages.update') !!}
-                    </button>
                 </div>
             </div>
         </form>
@@ -287,7 +273,7 @@
 </section>
 
 {{-- Modal Admin Tickets --}}
-<div class="modal fade" id="AdminTickets" aria-hidden="true" aria-labelledby="modal-title" role="dialog" tabindex="-2">
+<div class="modal fade section-bg" id="AdminTickets" aria-hidden="true" aria-labelledby="modal-title" role="dialog" tabindex="-2">
     <div class="modal-dialog modal-lg modal-center">
         <div class="modal-content">
             <section id="products">

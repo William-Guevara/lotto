@@ -75,7 +75,6 @@ class MyAccountController extends Controller
         ]);
 
         // Note la regla de validación "confirmed", que solicitará que usted agregue un campo extra llamado password_confirm
-
         $user = Auth::user(); // Obtenga la instancia del usuario en sesión
         $password = Hash::make($request->password);
         $user->password = $password; // Rellene el usuario con el nuevo password ya encriptado
