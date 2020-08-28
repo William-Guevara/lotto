@@ -1,9 +1,12 @@
-.services .icon-box{
+.services .icon-box {
     height: 235px;
 }
-.input_quantity{
+
+.input_quantity {
     width: 50px;
 }
+
+
 /* Revolution Slider
 ====================================================================== */
 
@@ -59,7 +62,6 @@
 .caption.light p {
     color: #999;
 }
-
 
 
 /* All Mobile Sizes (devices and browser) */
@@ -169,4 +171,3 @@
         line-height: 32px;
     }
 }
-

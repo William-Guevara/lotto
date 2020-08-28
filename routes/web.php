@@ -72,6 +72,7 @@ Route::post('results/control', 'ResultsController@ResultsControl')->name('result
 
 //Compras
 Route::get('purchases', 'PurchasesController@ShowPurchases')->name('purchases'); //Vista de compras
+Route::get('Detail/{id}', 'PurchasesController@InfoPurchases'); //Consulta info
 
 //vistas Loterias administrador
 Route::get('adminPurchase/{category}', 'AdminPurchasesController@ShowPurchases')->name('adminPurchase'); //Vista de compras

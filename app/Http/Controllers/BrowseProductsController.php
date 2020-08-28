@@ -22,6 +22,7 @@ class BrowseProductsController extends Controller
                 '*'
             )
             ->where('category', $category)
+            ->where('display', 1)
             ->get();
 
         return view('browse_products')->with(['purchases' => $data, 'category' => $category]);
@@ -78,12 +79,12 @@ class BrowseProductsController extends Controller
         }
 
         $cart[$product_id] = [
-                "product_id" => $product_id,
-                "productName" => $productName,
-                "description" => $description,
-                "price" => $price,
-                "quantity" => $quantity,
-                "total" => $total,
+            "product_id" => $product_id,
+            "productName" => $productName,
+            "description" => $description,
+            "price" => $price,
+            "quantity" => $quantity,
+            "total" => $total,
         ];
         session()->put('cart', $cart);
 
@@ -110,7 +111,7 @@ class BrowseProductsController extends Controller
 
         return response()->json(array_values($cart));
     }
-    
+
     //ENVIO CARRITO DE COMPRAS
     public function checkout()
     {
@@ -161,7 +162,6 @@ class BrowseProductsController extends Controller
         return response()->json(['message' => 'Se han enviado tus propuestas ']);
     }
 
-
     public function DeleteToCart(Request $request)
     {
         $product_id = $request->input('product_id');
@@ -169,15 +169,15 @@ class BrowseProductsController extends Controller
         unset($cart[$product_id]);
         session()->put('cart', $cart);
 
-        return response()->json(['message' => 'Item removed'],200);
+        return response()->json(['message' => 'Item removed'], 200);
     }
 
     public function clearCart()
     {
         session()->forget('cart');
-       //session()->flush('cart');
+        //session()->flush('cart');
 
-        return response()->json(['message' => 'Cart deleted'],200);
+        return response()->json(['message' => 'Cart deleted'], 200);
     }
-    
+
 }

@@ -23,4 +23,17 @@ class PurchasesController extends Controller
         return view('purchases')->with('purchases', $data);
 
     }
+
+    public function InfoPurchases($id)
+    {
+        $user = Auth::user();
+
+        $data = DB::table('orders')
+            ->select('*')
+            ->where('order_id', $id)
+            ->get();
+
+        return response()->json($data);
+
+    }
 }

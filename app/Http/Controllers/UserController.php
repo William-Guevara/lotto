@@ -19,6 +19,7 @@ class UserController extends Controller
 
         $data = DB::table('users')
             ->select('user_id', 'email', 'fname', 'lname')
+            ->where('active', 1)
             ->get();
 
         return view('users')->with('users', $data);
@@ -45,14 +46,13 @@ class UserController extends Controller
         return response()->json(['message' => 'User delete']);
     }
 
-    //update or create user from myAcount 
+    //update or create user from myAcount
     public function UserControl(Request $request)
     {
         //Actualizar el registro del producto
         $option_select = $request->input('option');
         $user_id = $request->input('user_id');
 
-        
         $Email = $request->input('email');
         $Email2 = $request->input('email2');
         $Password = $request->input('password');
@@ -94,10 +94,10 @@ class UserController extends Controller
                     'newsletter' => $Newsletter,
                     'language' => $Language,
                     'level' => $Level,
-                    'active' => 1
+                    'active' => 1,
                 ]);
             return response()->json(['message' => 'Created']);
-        }else if ($option_select == 'update_admin') {
+        } else if ($option_select == 'update_admin') {
             DB::table('users')
                 ->where('user_id', $user_id)
                 ->update([
@@ -117,12 +117,12 @@ class UserController extends Controller
                     'newsletter' => $Newsletter,
                     'language' => $Language,
                     'level' => $Level,
-                    'active' => 1
+                    'active' => 1,
                 ]);
             return redirect()->back();
-        }else if ($option_select == 'update_client') {
+        } else if ($option_select == 'update_client') {
             $user = Auth::user();
-            
+
             DB::table('users')
                 ->where('user_id', $user->user_id)
                 ->update([
@@ -218,7 +218,7 @@ class UserController extends Controller
             ->where('orders.response_code', 1)
             ->where('orders.order_id', $id)
             ->get();
-    
+
         return $orders;
     }
 

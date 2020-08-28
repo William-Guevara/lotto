@@ -43,7 +43,7 @@
                                 value="{!! $purchas->total_tickets !!}"></td>
                         <td>{!! $purchas->category !!}</td>
                         <td>
-                            <input name="date" type="date" class="form-control">
+                            <input name="date" type="date" min="{{ date('Y-m-d') }}" class="form-control">
                         </td>
                         <td>
                             <input name="file_" type="file" class="form-control">
