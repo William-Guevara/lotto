@@ -1,28 +1,24 @@
 //Datatable
-$(document).ready(function () {
+$(document).ready(function() {
     $("#table_id").DataTable({
         "pageLength": 20,
-        dom: 'Bfrtip',
-        buttons: [
-            'print'
-        ],
-        "order": [1,'desc']
+        "order": [1, 'desc']
     });
-    
+
 });
 
 //clean inputs
-$(function (event) {
-    $(".clear").click(function () {
+$(function(event) {
+    $(".clear").click(function() {
         $(".campos").val("");
     });
 });
 
 //data to modal
-$(function (event) {
+$(function(event) {
     $("#modalAdminResult")
         .off()
-        .on("show.bs.modal", function (e) {
+        .on("show.bs.modal", function(e) {
             var option = $(e.relatedTarget).data("option");
             var result = $(e.relatedTarget).data("result");
             $("#option_select").val(option);
@@ -39,7 +35,7 @@ $(function (event) {
                     contentType: "application/json; charset=utf-8",
                     dataType: "json",
                     async: true,
-                    success: function (response) {
+                    success: function(response) {
                         //cargar funcion click envio de datos agrtegar area
                         $("#drawing_id").val(response.drawing_id);
                         $("#category").val(response.category);
@@ -47,8 +43,8 @@ $(function (event) {
                         $("#numbers").val(response.numbers);
                         $("#jackpot").val(response.jackpot);
                     },
-                    failure: function (response) {},
-                    error: function (response) {},
+                    failure: function(response) {},
+                    error: function(response) {},
                     timeout: 10000,
                 });
             }
@@ -57,10 +53,10 @@ $(function (event) {
 //Fin cargar area
 
 //add or update product send
-$(function (event) {
+$(function(event) {
     $("#btn_send")
         .off()
-        .on("click", function (e) {
+        .on("click", function(e) {
             let option = $("#option_select").val();
             let drawing_id = $("#drawing_id").val();
             let category = $("#category").val();
@@ -72,7 +68,7 @@ $(function (event) {
                 category == '' || category == null ||
                 drawing_date == '' ||
                 numbers == '' ||
-                jackpot == '' 
+                jackpot == ''
             ) {
                 swal("fields are missing", {
                     icon: "error",
@@ -99,7 +95,7 @@ $(function (event) {
                     jackpot: jackpot
                 }),
                 dataType: "json",
-                success: function (response) {
+                success: function(response) {
                     swal(response.message + "", {
                         icon: "success",
                         buttons: {
@@ -111,7 +107,7 @@ $(function (event) {
                         window.location.href = "results";
                     });
                 },
-                failure: function (response) {
+                failure: function(response) {
                     swal(xhr.responseJSON.message + "", {
                         icon: "error",
                         buttons: {
@@ -121,7 +117,7 @@ $(function (event) {
                         },
                     });
                 },
-                error: function (response) {},
+                error: function(response) {},
                 timeout: 1000,
             });
         });
@@ -129,10 +125,10 @@ $(function (event) {
 
 //Delete user
 let user;
-$(function (event) {
+$(function(event) {
     $(".btn_delete")
         .off()
-        .on("click", function (e) {
+        .on("click", function(e) {
             var result = $(this).data("result");
             swal({
                 title: "¿Delete result?",
@@ -147,7 +143,7 @@ $(function (event) {
                     confirm: {
                         text: "Yes!",
                         className: "btn btn-success",
-                        afterSelect: function () {},
+                        afterSelect: function() {},
                     },
                 },
             }).then((willCreate) => {
