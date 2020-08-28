@@ -45,17 +45,21 @@ Route::get('index', function () {
 Route::post('/contact_us/add', 'ContactUsController@AddMenssage')->name('addMenssage'); //Agregar mensaje
 //Rutas de administrador
 
+Route::get('register', function () {
+    $countries = DB::table('countries')->select('*')->get();
+    return view('auth.register')->with('countries', $countries);
+})->name('register'); //Vista de usuarios
+
 //Usuarios administrador
 Route::get('users', 'UserController@ShowUser')->name('users'); //Vista de usuarios
 Route::get('users/{id}', 'UserController@SearchInfo'); //Carga la informacion del cliente seleccionado a las modales Actualizar cliente y Eliminar cliente
 Route::get('users/{id}/delete', 'UserController@DeleteUser'); //Eliminar usuario
 Route::post('users/control', 'UserController@UserControl')->name('user_control'); //Actualiza o crea un usuario
 Route::get('users/{id}/detail', 'UserController@UserDetail')->name('userDetail'); //Detalle de un usuario desde el panel de administración
-Route::get('users/{id}/products', 'UserController@DetailProducts')->name('DetailProducts'); //Modal de productos de orden seleccionada 
-Route::post('users/products/AddTickets', 'UserController@AddTickets')->name('AddTickets'); //Send 
+Route::get('users/{id}/products', 'UserController@DetailProducts')->name('DetailProducts'); //Modal de productos de orden seleccionada
+Route::post('users/products/AddTickets', 'UserController@AddTickets')->name('AddTickets'); //Send
 
-
-//Usuario cliente 
+//Usuario cliente
 Route::get('myAccount', 'MyAccountController@ShowDetail')->name('myAccount'); //Vista del perfil
 Route::get('myAccount/update/password', 'MyAccountController@updatePass')->name('updatePass');
 //Productos
@@ -69,6 +73,8 @@ Route::get('results', 'ResultsController@ShowResults')->name('results'); //Vista
 Route::get('results/{id}', 'ResultsController@SearchInfo'); //Carga la informacion del producto seleccionado
 Route::get('results/{id}/delete', 'ResultsController@DeleteResults'); //Eliminar producto
 Route::post('results/control', 'ResultsController@ResultsControl')->name('results_control'); //Actualiza o crea un producto
+Route::get('mail', 'ResultsController@ShowMail')->name('show_mail'); //Mostrar ultimos resultados
+Route::get('send_mail', 'ResultsController@SendMail')->name('send_mail'); //Mostrar ultimos resultados
 
 //Compras
 Route::get('purchases', 'PurchasesController@ShowPurchases')->name('purchases'); //Vista de compras
@@ -91,17 +97,15 @@ Route::post('BorrarCarrito', 'BrowseProductsController@clearCart')->name('Borrar
 Route::get('verifyCart', 'VerifyCartController@ShowCart')->name('verifyCart'); //Verificar carro de compras
 Route::get('verifyTransaction', 'VerifyCartController@verifyTransaction')->name('verifyTransaction'); //Verificar respuesta de transaccion
 
-//Correos electronicos 
+//Correos electronicos
 Route::get('adminMailTemplate', 'AdminMailController@ShowTemplates')->name('adminMailTemplate'); //Vista de los templates del email
 Route::post('adminMailTemplate/{id}', 'AdminMailController@SearchInfo'); //Carga la informacion del producto seleccionado
 Route::get('adminMailTemplate/{id}/delete', 'AdminMailController@DeleteadminMailTemplate'); //Eliminar producto
 Route::post('adminMailTemplate/control', 'AdminMailController@ProductControl')->name('adminMailTemplate_control'); //Actualiza o crea un producto
 Route::post('adminMailTemplate/{id}/send', 'AdminMailController@SendMail')->name('SendMail'); //Envio de emails
 
-//Correos electronicos 
+//Correos electronicos
 Route::get('edithHome', 'EdithHomeController@ShowTemplates')->name('EdithHome'); //Vista de los templates del email
-
-
 
 //Typea country in user
 Route::get('country_typea', function (Request $request) {
@@ -117,4 +121,3 @@ Route::get('/logout', function () {
     session()->forget('cart');
     return redirect('/login');
 })->name('logout');
-

@@ -13,7 +13,7 @@ $(function(event) {
             var user = $(e.relatedTarget).data("user");
             $("#option_select").val(option);
             if (option == "create") {
-                $("#tittle_modal").text("Register user");
+                $("#tittle_modal").text("sign in");
                 return;
             }
             if (option == "update") {

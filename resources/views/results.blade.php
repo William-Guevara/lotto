@@ -11,6 +11,10 @@
             data-target="#modalAdminResult" class="btn-info clear">
             <i class="bx bxs-add-to-queue"></i>
         </button>
+        <a href="{{ route('show_mail') }}" target="_blank"><button data-tooltip="tooltip" title="Send mail" class="btn-success clear">
+                <i class="bx bx-mail-send"></i>
+            </button>
+        </a>
         <table id="table_id" class="display">
             <thead>
                 <tr>
@@ -65,52 +69,51 @@
                             Millones, </a>
                         <a href="https://www.lotto.net/es/mega-millions/resultados" target="_blank"> Mega
                             Millions, </a>
-                            </br>
+                        </br>
                         <a href="https://www.lotto.net/es/powerball/resultados" target="_blank"> New York Lotto,
                         </a>
                         <a href="https://www.euromillones.com.es" target="_blank"> Power Ball,</a>
-                        <a href="https://www.lotto.net/es/california-super-lotto/resultados" target="_blank"> California Lotto</a>
+                        <a href="https://www.lotto.net/es/california-super-lotto/resultados" target="_blank"> California
+                            Lotto</a>
                         {{--<a href="{!! $url !!}" target="_blank">{!! trans('messages.linkLotto') !!}</a>--}}
                         <input type="hidden" class="campos" id="option_select">
                         <input type="hidden" class="campos" id="drawing_id">
                         <input type="hidden" class="_token" value="{{ csrf_token() }}">
                     </div>
-                    <div class="row justify-content-center" data-aos="fade-up" data-aos-delay="300">
-                        <div class="col-xl-9 col-lg-12 mt-4">
-                            <div class="form-row">
-                                <div class="col-md-6 form-group">
-                                    <label>Category</label>
-                                    <select class="form-control campos" id="category">
-                                        <option value="Florida Lotto">Florida Lotto</option>
-                                        <option value="Euro Millones">Euro Millones</option>
-                                        <option value="Mega Millions">Mega Millions</option>
-                                        <option value="New York Lotto">New York Lotto</option>
-                                        <option value="Power Ball">Power Ball</option>
-                                        <option value="California Lotto">California Lotto</option>
-                                        {{--<option value="Super Enalotto">Super Enalotto</option>--}}
-                                        {{--<option value="Euro Jackpot">Euro Jackpot</option>--}}
-                                    </select>
-                                </div>
-                                <div class="col-md-6 form-group">
-                                    <label>Drawing Date</label>
-                                    <input type="date" class="form-control campos" id="drawing_date"
-                                        placeholder="drawing_date" />
-                                </div>
-                                <div class="col-md-6 form-group">
-                                    <label>Numbers</label>
-                                    <input type="text" class="form-control campos" id="numbers" placeholder="numbers" />
-                                </div>
-                                <div class="col-md-6 form-group">
-                                    <label>Jackpot</label>
-                                    <input type="text" class="form-control campos" id="jackpot" placeholder="jackpot" />
-                                </div>
+                </div>
+                <div class="row justify-content-center" data-aos="fade-up" data-aos-delay="300">
+                    <div class="col-xl-9 col-lg-12 mt-4">
+                        <div class="form-row">
+                            <div class="col-md-3 form-group">
+                                <label>Category</label>
+                                <select class="form-control campos" id="category">
+                                    <option value="California Lotto">California Lotto</option>
+                                    <option value="Florida Lotto">Florida Lotto</option>
+                                    <option value="Power Ball">Power Ball</option>
+                                    <option value="New York Lotto">New York Lotto</option>
+                                    <option value="Euro Millones">Euro Millones</option>
+                                    <option value="Mega Millions">Mega Millions</option>
+                                </select>
+                            </div>
+                            <div class="col-md-3 form-group">
+                                <label>Drawing Date</label>
+                                <input type="date" class="form-control campos" id="drawing_date"
+                                    placeholder="drawing_date" />
+                            </div>
+                            <div class="col-md-3 form-group">
+                                <label>Numbers</label>
+                                <input type="text" class="form-control campos" id="numbers" placeholder="numbers" />
+                            </div>
+                            <div class="col-md-3 form-group">
+                                <label>Jackpot</label>
+                                <input type="text" class="form-control campos" id="jackpot" placeholder="jackpot" />
                             </div>
                         </div>
                     </div>
-                    <div class="text-center">
-                        <button class="btn btn-success" id="btn_send" type="button">Send</button>
-                        <button class="btn btn-danger" data-dismiss="modal" type="button">Cancel</button>
-                    </div>
+                </div>
+                <div class="text-center">
+                    <button class="btn btn-success" id="btn_send" type="button">Send</button>
+                    <button class="btn btn-danger" data-dismiss="modal" type="button">Cancel</button>
                 </div>
             </section>
 

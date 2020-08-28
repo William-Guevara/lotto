@@ -10,7 +10,7 @@ return [
     'contact' => 'Contact',
     'lotteries' => 'Lotteries',
     'login' => 'Login',
-    'register' => 'Register',
+    'register' => 'Sign in',
     'logout' => 'Logout',
     'adminPanel' => 'Admin Panel',
     'last_result' =>'Last Result',
@@ -90,7 +90,7 @@ return [
    'Fax' => 'Fax',
    'Gender' => 'Gender',
    'Newsletter' => 'Newsletter',
-   'Lenguage' => 'Lenguage',
+   'Lenguage' => 'Language',
    'Register' => 'Register',
 
 

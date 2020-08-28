@@ -68,7 +68,7 @@ class AdminMailController extends Controller
         foreach ($users as $ema) {
             Mail::to($ema->email)->send(new SendEmailTemplate($msg));
         }
-        return response()->json(['message' => 'Cooreos enviandose'], 200);
+        return response()->json(['message' => 'Email sent'], 200);
     }
 
     //update or create user

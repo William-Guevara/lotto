@@ -3,14 +3,15 @@
 @section('content')
 <section id="seccion_data" class="seccion_data">
     <div class="section-title">
-        <h2 data-aos="fade-up">Register</h2>
+        <h2 data-aos="fade-up">{!! trans('messages.register') !!}</h2>
     </div>
     <div class="container">
         <form id="form_send" method="POST" action="{{ route('register') }}">
             <div class="form-group row">
                 @csrf
                 <div class="form-group col-md-6 row">
-                    <label for="email" class="col-md-4 col-form-label text-md-right">{!! trans('messages.Email') !!}</label>
+                    <label for="email" class="col-md-4 col-form-label text-md-right">{!! trans('messages.Email')
+                        !!}</label>
                     <div class="col-md-6">
                         <input id="email" type="email" class="form-control @error('email') is-invalid @enderror"
                             name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
@@ -130,10 +131,11 @@
                     <label for="country" class="col-md-4 col-form-label text-md-right">{!! trans('messages.Country')
                         !!}</label>
                     <div class="col-md-6">
-                        <input type="hidden" class="form-control @error('country') is-invalid @enderror"
-                            value="{{ old('country') }}" required id="id_country" name="country">
-                        <input id="country" type="text"
-                            class="typeahead_country form-control" required autocomplete="country" autofocus>
+                        <select class="form-control @error('country') is-invalid @enderror" name="country" id="country">
+                            @foreach($countries as $country)
+                            <option value="{!! $country->country_id !!}">{!! $country->country_name !!}</option>
+                            @endforeach
+                        </select>
                         @error('country')
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>
@@ -220,7 +222,7 @@
                         @enderror
                     </div>
                 </div>
-               
+
                 <div class="form-group col-md-6  row">
                     <div class="col-md-6 offset-md-4">
                         <button type="submit" class="btn btn-primary">
@@ -260,14 +262,14 @@ $(".typeahead_country").bind("typeahead:select", function(ev, data) {
 });
 
 $("#form_send").validate({
-        ignore: "not:hidden",
-        rules: {
-            something: {
-                number:true,
-                min:1,
-                required:true
-            }
+    ignore: "not:hidden",
+    rules: {
+        something: {
+            number: true,
+            min: 1,
+            required: true
         }
+    }
 });
 </script>
 

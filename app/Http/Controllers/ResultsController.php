@@ -2,9 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\MessageResult;
+
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Mail;
+
 
 class ResultsController extends Controller
 {
@@ -20,7 +24,7 @@ class ResultsController extends Controller
         $data = DB::table('results')
             ->select('*')
             ->get();
-            
+
         return view('results')->with('results', $data);
 
     }
@@ -80,5 +84,68 @@ class ResultsController extends Controller
         }
 
         return response()->json(['message' => 'No se registro ningun cambio'], 400);
+    }
+
+    //muestra resultados
+    public function ShowMail(Request $request)
+    {
+        $user = Auth::user();
+
+        $dist = DB::table('results')
+            ->select(DB::raw('distinct(category) as category'))
+            ->groupby('category')
+            ->get();
+
+        $count = 0;
+        $obj_ = [];
+
+        foreach ($dist as $di) {
+            $data = DB::table('results')
+                ->select('*')
+                ->where('category', $di->category)
+                ->orderby('drawing_date', 'desc')
+                ->first();
+
+            $obj_[$count] = $data;
+            $count++;
+        }
+
+        return view('view_result_mail')->with('results', $obj_);
+    }
+
+    public function SendMail()
+    {
+        $dist = DB::table('results')
+            ->select(DB::raw('distinct(category) as category'))
+            ->groupby('category')
+            ->get();
+
+        $count = 0;
+        $mail = [];
+
+        foreach ($dist as $di) {
+            $data = DB::table('results')
+                ->select('*')
+                ->where('category', $di->category)
+                ->orderby('drawing_date', 'desc')
+                ->first();
+
+            $mail[$count] = $data;
+            $count++;
+        }
+
+
+        $users = DB::table('users')
+            ->select('*')
+            ->get();
+       
+        $msg =  $mail;
+
+        foreach ($users as $ema) {
+            Mail::to($ema->email)->send(new MessageResult($msg));
+        }
+        /*Mail::to('wikoguevara@gmail.com')->send(new MessageResult($msg));*/
+
+        return response()->json(['message' => 'Email sent'], 200);
     }
 }
